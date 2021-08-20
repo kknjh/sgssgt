@@ -1,0 +1,1 @@
+train_data/ic15_data/train/word_10.png	CAUTION	0.9516505

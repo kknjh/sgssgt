@@ -1,0 +1,689 @@
+[2021/08/20 11:00:33] root INFO: Architecture : 
+[2021/08/20 11:00:33] root INFO:     Backbone : 
+[2021/08/20 11:00:33] root INFO:         model_name : large
+[2021/08/20 11:00:33] root INFO:         name : MobileNetV3
+[2021/08/20 11:00:33] root INFO:         scale : 0.5
+[2021/08/20 11:00:33] root INFO:     Head : 
+[2021/08/20 11:00:33] root INFO:         fc_decay : 0
+[2021/08/20 11:00:33] root INFO:         name : CTCHead
+[2021/08/20 11:00:33] root INFO:     Neck : 
+[2021/08/20 11:00:33] root INFO:         encoder_type : rnn
+[2021/08/20 11:00:33] root INFO:         hidden_size : 96
+[2021/08/20 11:00:33] root INFO:         name : SequenceEncoder
+[2021/08/20 11:00:33] root INFO:     Transform : None
+[2021/08/20 11:00:33] root INFO:     algorithm : CRNN
+[2021/08/20 11:00:33] root INFO:     model_type : rec
+[2021/08/20 11:00:33] root INFO: Eval : 
+[2021/08/20 11:00:33] root INFO:     dataset : 
+[2021/08/20 11:00:33] root INFO:         data_dir : ./train_data/ic15_data/
+[2021/08/20 11:00:33] root INFO:         label_file_list : ['./train_data/ic15_data/rec_gt_test.txt']
+[2021/08/20 11:00:33] root INFO:         name : SimpleDataSet
+[2021/08/20 11:00:33] root INFO:         transforms : 
+[2021/08/20 11:00:33] root INFO:             DecodeImage : 
+[2021/08/20 11:00:33] root INFO:                 channel_first : False
+[2021/08/20 11:00:33] root INFO:                 img_mode : BGR
+[2021/08/20 11:00:33] root INFO:             CTCLabelEncode : None
+[2021/08/20 11:00:33] root INFO:             RecResizeImg : 
+[2021/08/20 11:00:33] root INFO:                 image_shape : [3, 32, 100]
+[2021/08/20 11:00:33] root INFO:             KeepKeys : 
+[2021/08/20 11:00:33] root INFO:                 keep_keys : ['image', 'label', 'length']
+[2021/08/20 11:00:33] root INFO:     loader : 
+[2021/08/20 11:00:33] root INFO:         batch_size_per_card : 256
+[2021/08/20 11:00:33] root INFO:         drop_last : False
+[2021/08/20 11:00:33] root INFO:         num_workers : 4
+[2021/08/20 11:00:33] root INFO:         shuffle : False
+[2021/08/20 11:00:33] root INFO:         use_shared_memory : False
+[2021/08/20 11:00:33] root INFO: Global : 
+[2021/08/20 11:00:33] root INFO:     cal_metric_during_train : True
+[2021/08/20 11:00:33] root INFO:     character_dict_path : ppocr/utils/chw_dict.txt
+[2021/08/20 11:00:33] root INFO:     character_type : ch
+[2021/08/20 11:00:33] root INFO:     checkpoints : None
+[2021/08/20 11:00:33] root INFO:     debug : False
+[2021/08/20 11:00:33] root INFO:     distributed : False
+[2021/08/20 11:00:33] root INFO:     epoch_num : 80
+[2021/08/20 11:00:33] root INFO:     eval_batch_step : [0, 2000]
+[2021/08/20 11:00:33] root INFO:     infer_img : doc/imgs_words_en/word_10.png
+[2021/08/20 11:00:33] root INFO:     infer_mode : False
+[2021/08/20 11:00:33] root INFO:     log_smooth_window : 20
+[2021/08/20 11:00:33] root INFO:     max_text_length : 25
+[2021/08/20 11:00:33] root INFO:     pretrained_model : ./pretrain_models/rec_mv3_none_bilstm_ctc_v2.0_train/best_accuracy
+[2021/08/20 11:00:33] root INFO:     print_batch_step : 10
+[2021/08/20 11:00:33] root INFO:     save_epoch_step : 3
+[2021/08/20 11:00:33] root INFO:     save_inference_dir : None
+[2021/08/20 11:00:33] root INFO:     save_model_dir : ./output/rec/ic15/
+[2021/08/20 11:00:33] root INFO:     save_res_path : ./output/rec/predicts_ic15.txt
+[2021/08/20 11:00:33] root INFO:     use_gpu : True
+[2021/08/20 11:00:33] root INFO:     use_space_char : True
+[2021/08/20 11:00:33] root INFO:     use_visualdl : False
+[2021/08/20 11:00:33] root INFO: Loss : 
+[2021/08/20 11:00:33] root INFO:     name : CTCLoss
+[2021/08/20 11:00:33] root INFO: Metric : 
+[2021/08/20 11:00:33] root INFO:     main_indicator : acc
+[2021/08/20 11:00:33] root INFO:     name : RecMetric
+[2021/08/20 11:00:33] root INFO: Optimizer : 
+[2021/08/20 11:00:33] root INFO:     beta1 : 0.9
+[2021/08/20 11:00:33] root INFO:     beta2 : 0.999
+[2021/08/20 11:00:33] root INFO:     lr : 
+[2021/08/20 11:00:33] root INFO:         learning_rate : 0.0005
+[2021/08/20 11:00:33] root INFO:     name : Adam
+[2021/08/20 11:00:33] root INFO:     regularizer : 
+[2021/08/20 11:00:33] root INFO:         factor : 0
+[2021/08/20 11:00:33] root INFO:         name : L2
+[2021/08/20 11:00:33] root INFO: PostProcess : 
+[2021/08/20 11:00:33] root INFO:     name : CTCLabelDecode
+[2021/08/20 11:00:33] root INFO: Train : 
+[2021/08/20 11:00:33] root INFO:     dataset : 
+[2021/08/20 11:00:33] root INFO:         data_dir : ./train_data/ic15_data/
+[2021/08/20 11:00:33] root INFO:         label_file_list : ['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:00:33] root INFO:         name : SimpleDataSet
+[2021/08/20 11:00:33] root INFO:         transforms : 
+[2021/08/20 11:00:33] root INFO:             DecodeImage : 
+[2021/08/20 11:00:33] root INFO:                 channel_first : False
+[2021/08/20 11:00:33] root INFO:                 img_mode : BGR
+[2021/08/20 11:00:33] root INFO:             CTCLabelEncode : None
+[2021/08/20 11:00:33] root INFO:             RecResizeImg : 
+[2021/08/20 11:00:33] root INFO:                 image_shape : [3, 32, 100]
+[2021/08/20 11:00:33] root INFO:             KeepKeys : 
+[2021/08/20 11:00:33] root INFO:                 keep_keys : ['image', 'label', 'length']
+[2021/08/20 11:00:33] root INFO:     loader : 
+[2021/08/20 11:00:33] root INFO:         batch_size_per_card : 108
+[2021/08/20 11:00:33] root INFO:         drop_last : True
+[2021/08/20 11:00:33] root INFO:         num_workers : 8
+[2021/08/20 11:00:33] root INFO:         shuffle : True
+[2021/08/20 11:00:33] root INFO:         use_shared_memory : False
+[2021/08/20 11:00:33] root INFO: train with paddle 2.0.0 and device CUDAPlace(0)
+[2021/08/20 11:00:33] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:00:33] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_test.txt']
+[2021/08/20 11:00:34] root INFO: load pretrained model from ['./pretrain_models/rec_mv3_none_bilstm_ctc_v2.0_train/best_accuracy']
+[2021/08/20 11:00:34] root INFO: train dataloader has 41 iters
+[2021/08/20 11:00:34] root INFO: valid dataloader has 9 iters
+[2021/08/20 11:00:34] root INFO: During the training process, after the 0th iteration, an evaluation is run every 2000 iterations
+[2021/08/20 11:00:34] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:00:37] root INFO: epoch: [1/80], iter: 10, lr: 0.000500, loss: 192.230377, acc: 0.000000, norm_edit_dis: 0.002915, reader_cost: 0.01852 s, batch_cost: 0.22752 s, samples: 1188, ips: 522.16128
+[2021/08/20 11:00:38] root INFO: epoch: [1/80], iter: 20, lr: 0.000500, loss: 176.326324, acc: 0.000000, norm_edit_dis: 0.027098, reader_cost: 0.00008 s, batch_cost: 0.12800 s, samples: 1080, ips: 843.71780
+[2021/08/20 11:00:40] root INFO: epoch: [1/80], iter: 30, lr: 0.000500, loss: 130.438049, acc: 0.000000, norm_edit_dis: 0.016733, reader_cost: 0.00006 s, batch_cost: 0.12834 s, samples: 1080, ips: 841.52532
+[2021/08/20 11:00:42] root INFO: epoch: [1/80], iter: 40, lr: 0.000500, loss: 71.092033, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00005 s, batch_cost: 0.12692 s, samples: 1080, ips: 850.92614
+[2021/08/20 11:00:42] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:00:42] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:00:44] root INFO: epoch: [2/80], iter: 50, lr: 0.000500, loss: 34.480110, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.02668 s, batch_cost: 0.16447 s, samples: 1080, ips: 656.63613
+[2021/08/20 11:00:46] root INFO: epoch: [2/80], iter: 60, lr: 0.000500, loss: 25.306618, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00010 s, batch_cost: 0.13053 s, samples: 1080, ips: 827.37893
+[2021/08/20 11:00:47] root INFO: epoch: [2/80], iter: 70, lr: 0.000500, loss: 23.882999, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00007 s, batch_cost: 0.12716 s, samples: 1080, ips: 849.32703
+[2021/08/20 11:00:49] root INFO: epoch: [2/80], iter: 80, lr: 0.000500, loss: 23.251247, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00005 s, batch_cost: 0.12723 s, samples: 1080, ips: 848.88646
+[2021/08/20 11:00:49] root INFO: epoch: [2/80], iter: 81, lr: 0.000500, loss: 23.127094, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00001 s, batch_cost: 0.01299 s, samples: 108, ips: 831.28838
+[2021/08/20 11:00:49] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:00:49] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:00:51] root INFO: epoch: [3/80], iter: 90, lr: 0.000500, loss: 22.642174, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.02705 s, batch_cost: 0.15402 s, samples: 972, ips: 631.10338
+[2021/08/20 11:00:53] root INFO: epoch: [3/80], iter: 100, lr: 0.000500, loss: 22.436369, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00009 s, batch_cost: 0.13520 s, samples: 1080, ips: 798.78713
+[2021/08/20 11:00:55] root INFO: epoch: [3/80], iter: 110, lr: 0.000500, loss: 22.685360, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00009 s, batch_cost: 0.13240 s, samples: 1080, ips: 815.71122
+[2021/08/20 11:00:56] root INFO: epoch: [3/80], iter: 120, lr: 0.000500, loss: 22.680386, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00006 s, batch_cost: 0.13085 s, samples: 1080, ips: 825.36411
+[2021/08/20 11:00:57] root INFO: epoch: [3/80], iter: 122, lr: 0.000500, loss: 22.654688, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00001 s, batch_cost: 0.02575 s, samples: 216, ips: 838.96023
+[2021/08/20 11:00:57] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:00:57] root INFO: save model in ./output/rec/ic15/iter_epoch_3
+[2021/08/20 11:00:57] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:00:59] root INFO: epoch: [4/80], iter: 130, lr: 0.000500, loss: 22.625954, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.03180 s, batch_cost: 0.14266 s, samples: 864, ips: 605.62779
+[2021/08/20 11:01:01] root INFO: epoch: [4/80], iter: 140, lr: 0.000500, loss: 22.563469, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00009 s, batch_cost: 0.13113 s, samples: 1080, ips: 823.58273
+[2021/08/20 11:01:02] root INFO: epoch: [4/80], iter: 150, lr: 0.000500, loss: 22.015911, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00009 s, batch_cost: 0.13085 s, samples: 1080, ips: 825.35794
+[2021/08/20 11:01:04] root INFO: epoch: [4/80], iter: 160, lr: 0.000500, loss: 22.068632, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00004 s, batch_cost: 0.12811 s, samples: 1080, ips: 843.02032
+[2021/08/20 11:01:04] root INFO: epoch: [4/80], iter: 163, lr: 0.000500, loss: 22.037189, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00002 s, batch_cost: 0.03838 s, samples: 324, ips: 844.26776
+[2021/08/20 11:01:05] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:05] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:01:06] root INFO: epoch: [5/80], iter: 170, lr: 0.000500, loss: 21.930445, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.02862 s, batch_cost: 0.12973 s, samples: 756, ips: 582.72839
+[2021/08/20 11:01:08] root INFO: epoch: [5/80], iter: 180, lr: 0.000500, loss: 21.694180, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00009 s, batch_cost: 0.13093 s, samples: 1080, ips: 824.88511
+[2021/08/20 11:01:10] root INFO: epoch: [5/80], iter: 190, lr: 0.000500, loss: 21.699226, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00010 s, batch_cost: 0.13323 s, samples: 1080, ips: 810.62624
+[2021/08/20 11:01:12] root INFO: epoch: [5/80], iter: 200, lr: 0.000500, loss: 21.839008, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00005 s, batch_cost: 0.13244 s, samples: 1080, ips: 815.48434
+[2021/08/20 11:01:12] root INFO: epoch: [5/80], iter: 204, lr: 0.000500, loss: 21.730421, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00002 s, batch_cost: 0.05260 s, samples: 432, ips: 821.32587
+[2021/08/20 11:01:13] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:13] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:01:14] root INFO: epoch: [6/80], iter: 210, lr: 0.000500, loss: 21.675724, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.03004 s, batch_cost: 0.11875 s, samples: 648, ips: 545.66701
+[2021/08/20 11:01:16] root INFO: epoch: [6/80], iter: 220, lr: 0.000500, loss: 21.675724, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.13240 s, samples: 1080, ips: 815.68713
+[2021/08/20 11:01:17] root INFO: epoch: [6/80], iter: 230, lr: 0.000500, loss: 21.611534, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00010 s, batch_cost: 0.13085 s, samples: 1080, ips: 825.40111
+[2021/08/20 11:01:19] root INFO: epoch: [6/80], iter: 240, lr: 0.000500, loss: 21.184843, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00005 s, batch_cost: 0.12887 s, samples: 1080, ips: 838.05037
+[2021/08/20 11:01:20] root INFO: epoch: [6/80], iter: 245, lr: 0.000500, loss: 21.223511, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00002 s, batch_cost: 0.06674 s, samples: 540, ips: 809.13411
+[2021/08/20 11:01:20] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:20] root INFO: save model in ./output/rec/ic15/iter_epoch_6
+[2021/08/20 11:01:20] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:01:22] root INFO: epoch: [7/80], iter: 250, lr: 0.000500, loss: 21.255083, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.03180 s, batch_cost: 0.10240 s, samples: 540, ips: 527.34526
+[2021/08/20 11:01:23] root INFO: epoch: [7/80], iter: 260, lr: 0.000500, loss: 21.437149, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.12872 s, samples: 1080, ips: 839.00126
+[2021/08/20 11:01:25] root INFO: epoch: [7/80], iter: 270, lr: 0.000500, loss: 21.466116, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.12852 s, samples: 1080, ips: 840.36661
+[2021/08/20 11:01:27] root INFO: epoch: [7/80], iter: 280, lr: 0.000500, loss: 21.584091, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00005 s, batch_cost: 0.12820 s, samples: 1080, ips: 842.45089
+[2021/08/20 11:01:28] root INFO: epoch: [7/80], iter: 286, lr: 0.000500, loss: 21.208805, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00002 s, batch_cost: 0.07667 s, samples: 648, ips: 845.19638
+[2021/08/20 11:01:28] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:28] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:01:29] root INFO: epoch: [8/80], iter: 290, lr: 0.000500, loss: 21.208805, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.02917 s, batch_cost: 0.09040 s, samples: 432, ips: 477.88528
+[2021/08/20 11:01:31] root INFO: epoch: [8/80], iter: 300, lr: 0.000500, loss: 21.330065, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.13024 s, samples: 1080, ips: 829.20714
+[2021/08/20 11:01:32] root INFO: epoch: [8/80], iter: 310, lr: 0.000500, loss: 21.120205, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.12893 s, samples: 1080, ips: 837.64761
+[2021/08/20 11:01:34] root INFO: epoch: [8/80], iter: 320, lr: 0.000500, loss: 20.917332, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00005 s, batch_cost: 0.12748 s, samples: 1080, ips: 847.22337
+[2021/08/20 11:01:35] root INFO: epoch: [8/80], iter: 327, lr: 0.000500, loss: 20.926262, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00003 s, batch_cost: 0.08927 s, samples: 756, ips: 846.87090
+[2021/08/20 11:01:35] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:35] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:01:36] root INFO: epoch: [9/80], iter: 330, lr: 0.000500, loss: 20.820292, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.02832 s, batch_cost: 0.07704 s, samples: 324, ips: 420.56827
+[2021/08/20 11:01:38] root INFO: epoch: [9/80], iter: 340, lr: 0.000500, loss: 20.674076, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.12851 s, samples: 1080, ips: 840.43334
+[2021/08/20 11:01:40] root INFO: epoch: [9/80], iter: 350, lr: 0.000500, loss: 20.612841, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.12861 s, samples: 1080, ips: 839.74362
+[2021/08/20 11:01:41] root INFO: epoch: [9/80], iter: 360, lr: 0.000500, loss: 20.573774, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00005 s, batch_cost: 0.12892 s, samples: 1080, ips: 837.72615
+[2021/08/20 11:01:43] root INFO: epoch: [9/80], iter: 368, lr: 0.000500, loss: 20.164358, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00004 s, batch_cost: 0.10244 s, samples: 864, ips: 843.45863
+[2021/08/20 11:01:43] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:43] root INFO: save model in ./output/rec/ic15/iter_epoch_9
+[2021/08/20 11:01:43] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:01:44] root INFO: epoch: [10/80], iter: 370, lr: 0.000500, loss: 20.187969, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.03038 s, batch_cost: 0.06345 s, samples: 216, ips: 340.42104
+[2021/08/20 11:01:45] root INFO: epoch: [10/80], iter: 380, lr: 0.000500, loss: 19.823799, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.12925 s, samples: 1080, ips: 835.59409
+[2021/08/20 11:01:47] root INFO: epoch: [10/80], iter: 390, lr: 0.000500, loss: 19.524605, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00008 s, batch_cost: 0.12956 s, samples: 1080, ips: 833.57639
+[2021/08/20 11:01:49] root INFO: epoch: [10/80], iter: 400, lr: 0.000500, loss: 19.440529, acc: 0.000000, norm_edit_dis: 0.000000, reader_cost: 0.00006 s, batch_cost: 0.12775 s, samples: 1080, ips: 845.42616
+[2021/08/20 11:01:50] root INFO: epoch: [10/80], iter: 409, lr: 0.000500, loss: 19.487949, acc: 0.000000, norm_edit_dis: 0.001323, reader_cost: 0.00004 s, batch_cost: 0.11454 s, samples: 972, ips: 848.60385
+[2021/08/20 11:01:51] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:51] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:01:51] root INFO: epoch: [11/80], iter: 410, lr: 0.000500, loss: 19.377104, acc: 0.000000, norm_edit_dis: 0.001433, reader_cost: 0.02924 s, batch_cost: 0.05035 s, samples: 108, ips: 214.51436
+[2021/08/20 11:01:53] root INFO: epoch: [11/80], iter: 420, lr: 0.000500, loss: 19.209866, acc: 0.000000, norm_edit_dis: 0.006511, reader_cost: 0.00008 s, batch_cost: 0.12977 s, samples: 1080, ips: 832.22534
+[2021/08/20 11:01:54] root INFO: epoch: [11/80], iter: 430, lr: 0.000500, loss: 19.073805, acc: 0.000000, norm_edit_dis: 0.008557, reader_cost: 0.00009 s, batch_cost: 0.13107 s, samples: 1080, ips: 823.97088
+[2021/08/20 11:01:56] root INFO: epoch: [11/80], iter: 440, lr: 0.000500, loss: 18.931168, acc: 0.000000, norm_edit_dis: 0.012131, reader_cost: 0.00007 s, batch_cost: 0.12844 s, samples: 1080, ips: 840.84847
+[2021/08/20 11:01:58] root INFO: epoch: [11/80], iter: 450, lr: 0.000500, loss: 18.718824, acc: 0.000000, norm_edit_dis: 0.016389, reader_cost: 0.00005 s, batch_cost: 0.12735 s, samples: 1080, ips: 848.08720
+[2021/08/20 11:01:58] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:01:58] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:00] root INFO: epoch: [12/80], iter: 460, lr: 0.000500, loss: 18.707073, acc: 0.000000, norm_edit_dis: 0.018008, reader_cost: 0.02998 s, batch_cost: 0.16768 s, samples: 1080, ips: 644.10063
+[2021/08/20 11:02:02] root INFO: epoch: [12/80], iter: 470, lr: 0.000500, loss: 18.347073, acc: 0.000000, norm_edit_dis: 0.022773, reader_cost: 0.00009 s, batch_cost: 0.12965 s, samples: 1080, ips: 833.01749
+[2021/08/20 11:02:03] root INFO: epoch: [12/80], iter: 480, lr: 0.000500, loss: 18.180378, acc: 0.000000, norm_edit_dis: 0.024950, reader_cost: 0.00012 s, batch_cost: 0.12796 s, samples: 1080, ips: 844.02089
+[2021/08/20 11:02:05] root INFO: epoch: [12/80], iter: 490, lr: 0.000500, loss: 17.964897, acc: 0.000000, norm_edit_dis: 0.028456, reader_cost: 0.00004 s, batch_cost: 0.12762 s, samples: 1080, ips: 846.28302
+[2021/08/20 11:02:05] root INFO: epoch: [12/80], iter: 491, lr: 0.000500, loss: 17.983715, acc: 0.000000, norm_edit_dis: 0.025248, reader_cost: 0.00000 s, batch_cost: 0.01289 s, samples: 108, ips: 837.74381
+[2021/08/20 11:02:05] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:06] root INFO: save model in ./output/rec/ic15/iter_epoch_12
+[2021/08/20 11:02:06] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:08] root INFO: epoch: [13/80], iter: 500, lr: 0.000500, loss: 17.904787, acc: 0.000000, norm_edit_dis: 0.031887, reader_cost: 0.02762 s, batch_cost: 0.15325 s, samples: 972, ips: 634.23889
+[2021/08/20 11:02:09] root INFO: epoch: [13/80], iter: 510, lr: 0.000500, loss: 17.640720, acc: 0.000000, norm_edit_dis: 0.031869, reader_cost: 0.00009 s, batch_cost: 0.12935 s, samples: 1080, ips: 834.93860
+[2021/08/20 11:02:11] root INFO: epoch: [13/80], iter: 520, lr: 0.000500, loss: 17.587818, acc: 0.000000, norm_edit_dis: 0.033214, reader_cost: 0.00006 s, batch_cost: 0.12871 s, samples: 1080, ips: 839.10989
+[2021/08/20 11:02:13] root INFO: epoch: [13/80], iter: 530, lr: 0.000500, loss: 17.596558, acc: 0.000000, norm_edit_dis: 0.034849, reader_cost: 0.00004 s, batch_cost: 0.12750 s, samples: 1080, ips: 847.05876
+[2021/08/20 11:02:13] root INFO: epoch: [13/80], iter: 532, lr: 0.000500, loss: 17.467196, acc: 0.000000, norm_edit_dis: 0.034682, reader_cost: 0.00001 s, batch_cost: 0.02576 s, samples: 216, ips: 838.57739
+[2021/08/20 11:02:13] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:13] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:15] root INFO: epoch: [14/80], iter: 540, lr: 0.000500, loss: 17.467196, acc: 0.000000, norm_edit_dis: 0.036848, reader_cost: 0.02930 s, batch_cost: 0.14225 s, samples: 864, ips: 607.36492
+[2021/08/20 11:02:17] root INFO: epoch: [14/80], iter: 550, lr: 0.000500, loss: 16.946671, acc: 0.000000, norm_edit_dis: 0.038071, reader_cost: 0.00008 s, batch_cost: 0.13034 s, samples: 1080, ips: 828.63362
+[2021/08/20 11:02:18] root INFO: epoch: [14/80], iter: 560, lr: 0.000500, loss: 17.069357, acc: 0.000000, norm_edit_dis: 0.038946, reader_cost: 0.00008 s, batch_cost: 0.12952 s, samples: 1080, ips: 833.87239
+[2021/08/20 11:02:20] root INFO: epoch: [14/80], iter: 570, lr: 0.000500, loss: 17.146151, acc: 0.000000, norm_edit_dis: 0.037645, reader_cost: 0.00004 s, batch_cost: 0.12802 s, samples: 1080, ips: 843.64599
+[2021/08/20 11:02:20] root INFO: epoch: [14/80], iter: 573, lr: 0.000500, loss: 17.146151, acc: 0.000000, norm_edit_dis: 0.036313, reader_cost: 0.00001 s, batch_cost: 0.03816 s, samples: 324, ips: 849.06212
+[2021/08/20 11:02:21] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:21] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:22] root INFO: epoch: [15/80], iter: 580, lr: 0.000500, loss: 17.073864, acc: 0.000000, norm_edit_dis: 0.038654, reader_cost: 0.03203 s, batch_cost: 0.12841 s, samples: 756, ips: 588.75415
+[2021/08/20 11:02:24] root INFO: epoch: [15/80], iter: 590, lr: 0.000500, loss: 16.991528, acc: 0.000000, norm_edit_dis: 0.039892, reader_cost: 0.00008 s, batch_cost: 0.12805 s, samples: 1080, ips: 843.40001
+[2021/08/20 11:02:25] root INFO: epoch: [15/80], iter: 600, lr: 0.000500, loss: 16.768940, acc: 0.000000, norm_edit_dis: 0.041884, reader_cost: 0.00013 s, batch_cost: 0.12874 s, samples: 1080, ips: 838.87400
+[2021/08/20 11:02:27] root INFO: epoch: [15/80], iter: 610, lr: 0.000500, loss: 16.580791, acc: 0.000000, norm_edit_dis: 0.044641, reader_cost: 0.00004 s, batch_cost: 0.12863 s, samples: 1080, ips: 839.60525
+[2021/08/20 11:02:28] root INFO: epoch: [15/80], iter: 614, lr: 0.000500, loss: 16.247864, acc: 0.000000, norm_edit_dis: 0.047118, reader_cost: 0.00002 s, batch_cost: 0.05123 s, samples: 432, ips: 843.25902
+[2021/08/20 11:02:28] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:28] root INFO: save model in ./output/rec/ic15/iter_epoch_15
+[2021/08/20 11:02:28] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:30] root INFO: epoch: [16/80], iter: 620, lr: 0.000500, loss: 16.215111, acc: 0.000000, norm_edit_dis: 0.045346, reader_cost: 0.02737 s, batch_cost: 0.11384 s, samples: 648, ips: 569.24424
+[2021/08/20 11:02:31] root INFO: epoch: [16/80], iter: 630, lr: 0.000500, loss: 16.129524, acc: 0.000000, norm_edit_dis: 0.045898, reader_cost: 0.00008 s, batch_cost: 0.12936 s, samples: 1080, ips: 834.88997
+[2021/08/20 11:02:33] root INFO: epoch: [16/80], iter: 640, lr: 0.000500, loss: 15.919662, acc: 0.000000, norm_edit_dis: 0.051760, reader_cost: 0.00009 s, batch_cost: 0.12839 s, samples: 1080, ips: 841.18777
+[2021/08/20 11:02:35] root INFO: epoch: [16/80], iter: 650, lr: 0.000500, loss: 15.781242, acc: 0.000000, norm_edit_dis: 0.052943, reader_cost: 0.00004 s, batch_cost: 0.12786 s, samples: 1080, ips: 844.65655
+[2021/08/20 11:02:35] root INFO: epoch: [16/80], iter: 655, lr: 0.000500, loss: 15.872648, acc: 0.000000, norm_edit_dis: 0.052943, reader_cost: 0.00002 s, batch_cost: 0.06401 s, samples: 540, ips: 843.55377
+[2021/08/20 11:02:36] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:36] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:37] root INFO: epoch: [17/80], iter: 660, lr: 0.000500, loss: 15.739400, acc: 0.000000, norm_edit_dis: 0.056972, reader_cost: 0.03019 s, batch_cost: 0.10148 s, samples: 540, ips: 532.11302
+[2021/08/20 11:02:39] root INFO: epoch: [17/80], iter: 670, lr: 0.000500, loss: 15.630375, acc: 0.000000, norm_edit_dis: 0.062083, reader_cost: 0.00008 s, batch_cost: 0.12969 s, samples: 1080, ips: 832.76450
+[2021/08/20 11:02:40] root INFO: epoch: [17/80], iter: 680, lr: 0.000500, loss: 15.470893, acc: 0.000000, norm_edit_dis: 0.068458, reader_cost: 0.00015 s, batch_cost: 0.12980 s, samples: 1080, ips: 832.02831
+[2021/08/20 11:02:42] root INFO: epoch: [17/80], iter: 690, lr: 0.000500, loss: 15.061810, acc: 0.000000, norm_edit_dis: 0.080720, reader_cost: 0.00005 s, batch_cost: 0.12810 s, samples: 1080, ips: 843.06300
+[2021/08/20 11:02:43] root INFO: epoch: [17/80], iter: 696, lr: 0.000500, loss: 14.886732, acc: 0.000000, norm_edit_dis: 0.081594, reader_cost: 0.00003 s, batch_cost: 0.07688 s, samples: 648, ips: 842.88793
+[2021/08/20 11:02:43] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:43] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:44] root INFO: epoch: [18/80], iter: 700, lr: 0.000500, loss: 14.598143, acc: 0.000000, norm_edit_dis: 0.081568, reader_cost: 0.02699 s, batch_cost: 0.08828 s, samples: 432, ips: 489.32716
+[2021/08/20 11:02:46] root INFO: epoch: [18/80], iter: 710, lr: 0.000500, loss: 14.486910, acc: 0.000000, norm_edit_dis: 0.084913, reader_cost: 0.00008 s, batch_cost: 0.12921 s, samples: 1080, ips: 835.85513
+[2021/08/20 11:02:48] root INFO: epoch: [18/80], iter: 720, lr: 0.000500, loss: 14.430382, acc: 0.000000, norm_edit_dis: 0.087928, reader_cost: 0.00008 s, batch_cost: 0.12965 s, samples: 1080, ips: 833.04078
+[2021/08/20 11:02:49] root INFO: epoch: [18/80], iter: 730, lr: 0.000500, loss: 14.001238, acc: 0.000000, norm_edit_dis: 0.095791, reader_cost: 0.00005 s, batch_cost: 0.12834 s, samples: 1080, ips: 841.53876
+[2021/08/20 11:02:50] root INFO: epoch: [18/80], iter: 737, lr: 0.000500, loss: 14.046436, acc: 0.000000, norm_edit_dis: 0.098356, reader_cost: 0.00003 s, batch_cost: 0.08941 s, samples: 756, ips: 845.52253
+[2021/08/20 11:02:51] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:51] root INFO: save model in ./output/rec/ic15/iter_epoch_18
+[2021/08/20 11:02:51] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:52] root INFO: epoch: [19/80], iter: 740, lr: 0.000500, loss: 14.124113, acc: 0.000000, norm_edit_dis: 0.102808, reader_cost: 0.03063 s, batch_cost: 0.07711 s, samples: 324, ips: 420.17193
+[2021/08/20 11:02:53] root INFO: epoch: [19/80], iter: 750, lr: 0.000500, loss: 13.620691, acc: 0.000000, norm_edit_dis: 0.110137, reader_cost: 0.00008 s, batch_cost: 0.12962 s, samples: 1080, ips: 833.21055
+[2021/08/20 11:02:55] root INFO: epoch: [19/80], iter: 760, lr: 0.000500, loss: 13.328829, acc: 0.000000, norm_edit_dis: 0.114929, reader_cost: 0.00009 s, batch_cost: 0.12874 s, samples: 1080, ips: 838.93056
+[2021/08/20 11:02:57] root INFO: epoch: [19/80], iter: 770, lr: 0.000500, loss: 13.237511, acc: 0.000000, norm_edit_dis: 0.122380, reader_cost: 0.00011 s, batch_cost: 0.12834 s, samples: 1080, ips: 841.54486
+[2021/08/20 11:02:58] root INFO: epoch: [19/80], iter: 778, lr: 0.000500, loss: 13.266582, acc: 0.000000, norm_edit_dis: 0.128576, reader_cost: 0.00004 s, batch_cost: 0.10236 s, samples: 864, ips: 844.09497
+[2021/08/20 11:02:58] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:02:58] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:02:59] root INFO: epoch: [20/80], iter: 780, lr: 0.000500, loss: 13.237511, acc: 0.000000, norm_edit_dis: 0.129088, reader_cost: 0.02991 s, batch_cost: 0.06389 s, samples: 216, ips: 338.09544
+[2021/08/20 11:03:01] root INFO: epoch: [20/80], iter: 790, lr: 0.000500, loss: 12.537642, acc: 0.000000, norm_edit_dis: 0.144263, reader_cost: 0.00009 s, batch_cost: 0.12928 s, samples: 1080, ips: 835.37805
+[2021/08/20 11:03:02] root INFO: epoch: [20/80], iter: 800, lr: 0.000500, loss: 12.655926, acc: 0.000000, norm_edit_dis: 0.171060, reader_cost: 0.00010 s, batch_cost: 0.13345 s, samples: 1080, ips: 809.28286
+[2021/08/20 11:03:04] root INFO: epoch: [20/80], iter: 810, lr: 0.000500, loss: 12.660146, acc: 0.000000, norm_edit_dis: 0.190103, reader_cost: 0.00007 s, batch_cost: 0.13085 s, samples: 1080, ips: 825.36381
+[2021/08/20 11:03:06] root INFO: epoch: [20/80], iter: 819, lr: 0.000500, loss: 12.213623, acc: 0.000000, norm_edit_dis: 0.210132, reader_cost: 0.00004 s, batch_cost: 0.11662 s, samples: 972, ips: 833.46898
+[2021/08/20 11:03:06] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:03:06] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:03:07] root INFO: epoch: [21/80], iter: 820, lr: 0.000500, loss: 12.108182, acc: 0.000000, norm_edit_dis: 0.213849, reader_cost: 0.03173 s, batch_cost: 0.05318 s, samples: 108, ips: 203.08923
+[2021/08/20 11:03:08] root INFO: epoch: [21/80], iter: 830, lr: 0.000500, loss: 11.704962, acc: 0.009259, norm_edit_dis: 0.248195, reader_cost: 0.00010 s, batch_cost: 0.13387 s, samples: 1080, ips: 806.72621
+[2021/08/20 11:03:10] root INFO: epoch: [21/80], iter: 840, lr: 0.000500, loss: 11.374824, acc: 0.018519, norm_edit_dis: 0.276270, reader_cost: 0.00008 s, batch_cost: 0.13060 s, samples: 1080, ips: 826.95298
+[2021/08/20 11:03:12] root INFO: epoch: [21/80], iter: 850, lr: 0.000500, loss: 11.374824, acc: 0.027778, norm_edit_dis: 0.287845, reader_cost: 0.00007 s, batch_cost: 0.13017 s, samples: 1080, ips: 829.68540
+[2021/08/20 11:03:13] root INFO: epoch: [21/80], iter: 860, lr: 0.000500, loss: 10.919566, acc: 0.032407, norm_edit_dis: 0.311288, reader_cost: 0.00005 s, batch_cost: 0.13035 s, samples: 1080, ips: 828.56041
+[2021/08/20 11:03:14] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:03:14] root INFO: save model in ./output/rec/ic15/iter_epoch_21
+[2021/08/20 11:03:14] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:03:16] root INFO: epoch: [22/80], iter: 870, lr: 0.000500, loss: 10.273531, acc: 0.046296, norm_edit_dis: 0.348261, reader_cost: 0.02967 s, batch_cost: 0.16969 s, samples: 1080, ips: 636.43624
+[2021/08/20 11:03:18] root INFO: epoch: [22/80], iter: 880, lr: 0.000500, loss: 10.175575, acc: 0.055556, norm_edit_dis: 0.373755, reader_cost: 0.00009 s, batch_cost: 0.13133 s, samples: 1080, ips: 822.32566
+[2021/08/20 11:03:19] root INFO: epoch: [22/80], iter: 890, lr: 0.000500, loss: 10.149101, acc: 0.055556, norm_edit_dis: 0.388432, reader_cost: 0.00007 s, batch_cost: 0.12921 s, samples: 1080, ips: 835.82413
+[2021/08/20 11:03:21] root INFO: epoch: [22/80], iter: 900, lr: 0.000500, loss: 9.964790, acc: 0.055556, norm_edit_dis: 0.422792, reader_cost: 0.00005 s, batch_cost: 0.12854 s, samples: 1080, ips: 840.20357
+[2021/08/20 11:03:21] root INFO: epoch: [22/80], iter: 901, lr: 0.000500, loss: 9.964790, acc: 0.055556, norm_edit_dis: 0.426707, reader_cost: 0.00000 s, batch_cost: 0.01316 s, samples: 108, ips: 820.80908
+[2021/08/20 11:03:22] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:03:22] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:03:23] root INFO: epoch: [23/80], iter: 910, lr: 0.000500, loss: 9.576591, acc: 0.060185, norm_edit_dis: 0.437412, reader_cost: 0.03280 s, batch_cost: 0.15537 s, samples: 972, ips: 625.59640
+[2021/08/20 11:03:25] root INFO: epoch: [23/80], iter: 920, lr: 0.000500, loss: 9.048536, acc: 0.064815, norm_edit_dis: 0.468075, reader_cost: 0.00009 s, batch_cost: 0.12926 s, samples: 1080, ips: 835.51241
+[2021/08/20 11:03:27] root INFO: epoch: [23/80], iter: 930, lr: 0.000500, loss: 9.036232, acc: 0.083333, norm_edit_dis: 0.478693, reader_cost: 0.00007 s, batch_cost: 0.12951 s, samples: 1080, ips: 833.91691
+[2021/08/20 11:03:29] root INFO: epoch: [23/80], iter: 940, lr: 0.000500, loss: 8.767696, acc: 0.101852, norm_edit_dis: 0.523737, reader_cost: 0.00005 s, batch_cost: 0.12717 s, samples: 1080, ips: 849.28546
+[2021/08/20 11:03:29] root INFO: epoch: [23/80], iter: 942, lr: 0.000500, loss: 8.767696, acc: 0.101852, norm_edit_dis: 0.527666, reader_cost: 0.00001 s, batch_cost: 0.02542 s, samples: 216, ips: 849.74621
+[2021/08/20 11:03:29] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:03:29] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:03:31] root INFO: epoch: [24/80], iter: 950, lr: 0.000500, loss: 8.422665, acc: 0.120370, norm_edit_dis: 0.535748, reader_cost: 0.02786 s, batch_cost: 0.14061 s, samples: 864, ips: 614.47532
+[2021/08/20 11:03:33] root INFO: epoch: [24/80], iter: 960, lr: 0.000500, loss: 7.890348, acc: 0.129630, norm_edit_dis: 0.564030, reader_cost: 0.00009 s, batch_cost: 0.13025 s, samples: 1080, ips: 829.15326
+[2021/08/20 11:03:34] root INFO: epoch: [24/80], iter: 970, lr: 0.000500, loss: 7.796523, acc: 0.166667, norm_edit_dis: 0.595500, reader_cost: 0.00008 s, batch_cost: 0.12854 s, samples: 1080, ips: 840.18986
+[2021/08/20 11:03:36] root INFO: epoch: [24/80], iter: 980, lr: 0.000500, loss: 7.490984, acc: 0.185185, norm_edit_dis: 0.619584, reader_cost: 0.00005 s, batch_cost: 0.12860 s, samples: 1080, ips: 839.79904
+[2021/08/20 11:03:37] root INFO: epoch: [24/80], iter: 983, lr: 0.000500, loss: 7.490984, acc: 0.199074, norm_edit_dis: 0.629603, reader_cost: 0.00001 s, batch_cost: 0.03908 s, samples: 324, ips: 829.00081
+[2021/08/20 11:03:37] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:03:37] root INFO: save model in ./output/rec/ic15/iter_epoch_24
+[2021/08/20 11:03:37] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:03:39] root INFO: epoch: [25/80], iter: 990, lr: 0.000500, loss: 7.367004, acc: 0.208333, norm_edit_dis: 0.631565, reader_cost: 0.02983 s, batch_cost: 0.13100 s, samples: 756, ips: 577.10504
+[2021/08/20 11:03:40] root INFO: epoch: [25/80], iter: 1000, lr: 0.000500, loss: 7.076512, acc: 0.222222, norm_edit_dis: 0.649292, reader_cost: 0.00011 s, batch_cost: 0.12981 s, samples: 1080, ips: 831.98246
+[2021/08/20 11:03:42] root INFO: epoch: [25/80], iter: 1010, lr: 0.000500, loss: 6.736394, acc: 0.236111, norm_edit_dis: 0.656149, reader_cost: 0.00008 s, batch_cost: 0.13104 s, samples: 1080, ips: 824.18407
+[2021/08/20 11:03:44] root INFO: epoch: [25/80], iter: 1020, lr: 0.000500, loss: 6.576690, acc: 0.287037, norm_edit_dis: 0.695659, reader_cost: 0.00005 s, batch_cost: 0.12950 s, samples: 1080, ips: 833.94992
+[2021/08/20 11:03:44] root INFO: epoch: [25/80], iter: 1024, lr: 0.000500, loss: 6.385908, acc: 0.305556, norm_edit_dis: 0.700160, reader_cost: 0.00002 s, batch_cost: 0.05166 s, samples: 432, ips: 836.20353
+[2021/08/20 11:03:45] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:03:45] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:03:46] root INFO: epoch: [26/80], iter: 1030, lr: 0.000500, loss: 5.916220, acc: 0.324074, norm_edit_dis: 0.714436, reader_cost: 0.03078 s, batch_cost: 0.11759 s, samples: 648, ips: 551.05700
+[2021/08/20 11:03:48] root INFO: epoch: [26/80], iter: 1040, lr: 0.000500, loss: 5.790408, acc: 0.351852, norm_edit_dis: 0.733486, reader_cost: 0.00010 s, batch_cost: 0.13057 s, samples: 1080, ips: 827.13932
+[2021/08/20 11:03:50] root INFO: epoch: [26/80], iter: 1050, lr: 0.000500, loss: 5.754423, acc: 0.351852, norm_edit_dis: 0.740478, reader_cost: 0.00009 s, batch_cost: 0.12898 s, samples: 1080, ips: 837.34799
+[2021/08/20 11:03:51] root INFO: epoch: [26/80], iter: 1060, lr: 0.000500, loss: 5.602458, acc: 0.361111, norm_edit_dis: 0.746510, reader_cost: 0.00005 s, batch_cost: 0.12905 s, samples: 1080, ips: 836.91126
+[2021/08/20 11:03:52] root INFO: epoch: [26/80], iter: 1065, lr: 0.000500, loss: 5.612130, acc: 0.388889, norm_edit_dis: 0.763350, reader_cost: 0.00002 s, batch_cost: 0.06464 s, samples: 540, ips: 835.36064
+[2021/08/20 11:03:52] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:03:52] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:03:54] root INFO: epoch: [27/80], iter: 1070, lr: 0.000500, loss: 5.479186, acc: 0.388889, norm_edit_dis: 0.762107, reader_cost: 0.02817 s, batch_cost: 0.10412 s, samples: 540, ips: 518.63749
+[2021/08/20 11:03:55] root INFO: epoch: [27/80], iter: 1080, lr: 0.000500, loss: 5.303310, acc: 0.425926, norm_edit_dis: 0.781540, reader_cost: 0.00009 s, batch_cost: 0.12858 s, samples: 1080, ips: 839.91552
+[2021/08/20 11:03:57] root INFO: epoch: [27/80], iter: 1090, lr: 0.000500, loss: 4.936099, acc: 0.449074, norm_edit_dis: 0.796283, reader_cost: 0.00009 s, batch_cost: 0.12912 s, samples: 1080, ips: 836.41676
+[2021/08/20 11:03:59] root INFO: epoch: [27/80], iter: 1100, lr: 0.000500, loss: 4.792307, acc: 0.449074, norm_edit_dis: 0.793502, reader_cost: 0.00005 s, batch_cost: 0.12859 s, samples: 1080, ips: 839.89605
+[2021/08/20 11:04:00] root INFO: epoch: [27/80], iter: 1106, lr: 0.000500, loss: 4.858975, acc: 0.453704, norm_edit_dis: 0.798860, reader_cost: 0.00003 s, batch_cost: 0.07691 s, samples: 648, ips: 842.59396
+[2021/08/20 11:04:00] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:00] root INFO: save model in ./output/rec/ic15/iter_epoch_27
+[2021/08/20 11:04:00] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:01] root INFO: epoch: [28/80], iter: 1110, lr: 0.000500, loss: 4.671966, acc: 0.481481, norm_edit_dis: 0.806025, reader_cost: 0.02944 s, batch_cost: 0.09074 s, samples: 432, ips: 476.07006
+[2021/08/20 11:04:03] root INFO: epoch: [28/80], iter: 1120, lr: 0.000500, loss: 4.459696, acc: 0.513889, norm_edit_dis: 0.826102, reader_cost: 0.00010 s, batch_cost: 0.13023 s, samples: 1080, ips: 829.32950
+[2021/08/20 11:04:05] root INFO: epoch: [28/80], iter: 1130, lr: 0.000500, loss: 4.391314, acc: 0.527778, norm_edit_dis: 0.827840, reader_cost: 0.00009 s, batch_cost: 0.13349 s, samples: 1080, ips: 809.03382
+[2021/08/20 11:04:06] root INFO: epoch: [28/80], iter: 1140, lr: 0.000500, loss: 4.334138, acc: 0.546296, norm_edit_dis: 0.836338, reader_cost: 0.00007 s, batch_cost: 0.12972 s, samples: 1080, ips: 832.58710
+[2021/08/20 11:04:08] root INFO: epoch: [28/80], iter: 1147, lr: 0.000500, loss: 4.286514, acc: 0.546296, norm_edit_dis: 0.830517, reader_cost: 0.00003 s, batch_cost: 0.09145 s, samples: 756, ips: 826.67047
+[2021/08/20 11:04:08] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:08] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:09] root INFO: epoch: [29/80], iter: 1150, lr: 0.000500, loss: 4.257836, acc: 0.555556, norm_edit_dis: 0.839607, reader_cost: 0.03045 s, batch_cost: 0.07675 s, samples: 324, ips: 422.16391
+[2021/08/20 11:04:11] root INFO: epoch: [29/80], iter: 1160, lr: 0.000500, loss: 4.008340, acc: 0.592593, norm_edit_dis: 0.847883, reader_cost: 0.00010 s, batch_cost: 0.13317 s, samples: 1080, ips: 810.98049
+[2021/08/20 11:04:12] root INFO: epoch: [29/80], iter: 1170, lr: 0.000500, loss: 3.836836, acc: 0.597222, norm_edit_dis: 0.854365, reader_cost: 0.00009 s, batch_cost: 0.13160 s, samples: 1080, ips: 820.64150
+[2021/08/20 11:04:14] root INFO: epoch: [29/80], iter: 1180, lr: 0.000500, loss: 3.759514, acc: 0.606481, norm_edit_dis: 0.860286, reader_cost: 0.00006 s, batch_cost: 0.12968 s, samples: 1080, ips: 832.80798
+[2021/08/20 11:04:15] root INFO: epoch: [29/80], iter: 1188, lr: 0.000500, loss: 3.892694, acc: 0.592593, norm_edit_dis: 0.850639, reader_cost: 0.00005 s, batch_cost: 0.10306 s, samples: 864, ips: 838.34731
+[2021/08/20 11:04:16] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:16] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:16] root INFO: epoch: [30/80], iter: 1190, lr: 0.000500, loss: 3.720796, acc: 0.601852, norm_edit_dis: 0.852368, reader_cost: 0.02982 s, batch_cost: 0.06470 s, samples: 216, ips: 333.85612
+[2021/08/20 11:04:18] root INFO: epoch: [30/80], iter: 1200, lr: 0.000500, loss: 3.675077, acc: 0.601852, norm_edit_dis: 0.858580, reader_cost: 0.00009 s, batch_cost: 0.13114 s, samples: 1080, ips: 823.56237
+[2021/08/20 11:04:20] root INFO: epoch: [30/80], iter: 1210, lr: 0.000500, loss: 3.501830, acc: 0.648148, norm_edit_dis: 0.872272, reader_cost: 0.00008 s, batch_cost: 0.12912 s, samples: 1080, ips: 836.40209
+[2021/08/20 11:04:22] root INFO: epoch: [30/80], iter: 1220, lr: 0.000500, loss: 3.530239, acc: 0.648148, norm_edit_dis: 0.873475, reader_cost: 0.00008 s, batch_cost: 0.12836 s, samples: 1080, ips: 841.39027
+[2021/08/20 11:04:23] root INFO: epoch: [30/80], iter: 1229, lr: 0.000500, loss: 3.320496, acc: 0.648148, norm_edit_dis: 0.883932, reader_cost: 0.00004 s, batch_cost: 0.11534 s, samples: 972, ips: 842.75412
+[2021/08/20 11:04:23] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:23] root INFO: save model in ./output/rec/ic15/iter_epoch_30
+[2021/08/20 11:04:23] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:24] root INFO: epoch: [31/80], iter: 1230, lr: 0.000500, loss: 3.254976, acc: 0.652778, norm_edit_dis: 0.886148, reader_cost: 0.03033 s, batch_cost: 0.05159 s, samples: 108, ips: 209.35397
+[2021/08/20 11:04:26] root INFO: epoch: [31/80], iter: 1240, lr: 0.000500, loss: 3.181983, acc: 0.666667, norm_edit_dis: 0.891479, reader_cost: 0.00010 s, batch_cost: 0.12952 s, samples: 1080, ips: 833.82465
+[2021/08/20 11:04:27] root INFO: epoch: [31/80], iter: 1250, lr: 0.000500, loss: 3.038882, acc: 0.666667, norm_edit_dis: 0.893031, reader_cost: 0.00009 s, batch_cost: 0.12916 s, samples: 1080, ips: 836.17744
+[2021/08/20 11:04:29] root INFO: epoch: [31/80], iter: 1260, lr: 0.000500, loss: 2.984660, acc: 0.675926, norm_edit_dis: 0.892773, reader_cost: 0.00008 s, batch_cost: 0.12907 s, samples: 1080, ips: 836.73750
+[2021/08/20 11:04:31] root INFO: epoch: [31/80], iter: 1270, lr: 0.000500, loss: 3.088064, acc: 0.666667, norm_edit_dis: 0.887289, reader_cost: 0.00005 s, batch_cost: 0.12877 s, samples: 1080, ips: 838.68607
+[2021/08/20 11:04:31] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:31] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:33] root INFO: epoch: [32/80], iter: 1280, lr: 0.000500, loss: 3.168542, acc: 0.662037, norm_edit_dis: 0.887647, reader_cost: 0.02884 s, batch_cost: 0.17181 s, samples: 1080, ips: 628.60788
+[2021/08/20 11:04:35] root INFO: epoch: [32/80], iter: 1290, lr: 0.000500, loss: 2.746023, acc: 0.712963, norm_edit_dis: 0.903647, reader_cost: 0.00010 s, batch_cost: 0.13080 s, samples: 1080, ips: 825.67974
+[2021/08/20 11:04:37] root INFO: epoch: [32/80], iter: 1300, lr: 0.000500, loss: 2.688460, acc: 0.712963, norm_edit_dis: 0.911034, reader_cost: 0.00007 s, batch_cost: 0.13052 s, samples: 1080, ips: 827.43152
+[2021/08/20 11:04:38] root INFO: epoch: [32/80], iter: 1310, lr: 0.000500, loss: 2.709920, acc: 0.703704, norm_edit_dis: 0.900367, reader_cost: 0.00005 s, batch_cost: 0.12879 s, samples: 1080, ips: 838.55255
+[2021/08/20 11:04:39] root INFO: epoch: [32/80], iter: 1311, lr: 0.000500, loss: 2.709920, acc: 0.703704, norm_edit_dis: 0.897709, reader_cost: 0.00000 s, batch_cost: 0.01273 s, samples: 108, ips: 848.22108
+[2021/08/20 11:04:39] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:39] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:41] root INFO: epoch: [33/80], iter: 1320, lr: 0.000500, loss: 2.826855, acc: 0.699074, norm_edit_dis: 0.901155, reader_cost: 0.02701 s, batch_cost: 0.15366 s, samples: 972, ips: 632.57782
+[2021/08/20 11:04:43] root INFO: epoch: [33/80], iter: 1330, lr: 0.000500, loss: 2.505432, acc: 0.740741, norm_edit_dis: 0.916810, reader_cost: 0.00009 s, batch_cost: 0.12943 s, samples: 1080, ips: 834.41230
+[2021/08/20 11:04:44] root INFO: epoch: [33/80], iter: 1340, lr: 0.000500, loss: 2.502655, acc: 0.740741, norm_edit_dis: 0.916810, reader_cost: 0.00007 s, batch_cost: 0.12918 s, samples: 1080, ips: 836.04225
+[2021/08/20 11:04:46] root INFO: epoch: [33/80], iter: 1350, lr: 0.000500, loss: 2.601842, acc: 0.726852, norm_edit_dis: 0.906956, reader_cost: 0.00004 s, batch_cost: 0.12800 s, samples: 1080, ips: 843.78051
+[2021/08/20 11:04:46] root INFO: epoch: [33/80], iter: 1352, lr: 0.000500, loss: 2.385433, acc: 0.722222, norm_edit_dis: 0.906956, reader_cost: 0.00001 s, batch_cost: 0.02549 s, samples: 216, ips: 847.34999
+[2021/08/20 11:04:47] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:47] root INFO: save model in ./output/rec/ic15/iter_epoch_33
+[2021/08/20 11:04:47] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:49] root INFO: epoch: [34/80], iter: 1360, lr: 0.000500, loss: 2.348082, acc: 0.726852, norm_edit_dis: 0.908117, reader_cost: 0.03157 s, batch_cost: 0.14389 s, samples: 864, ips: 600.45918
+[2021/08/20 11:04:50] root INFO: epoch: [34/80], iter: 1370, lr: 0.000500, loss: 2.318279, acc: 0.768519, norm_edit_dis: 0.920999, reader_cost: 0.00010 s, batch_cost: 0.13054 s, samples: 1080, ips: 827.32090
+[2021/08/20 11:04:52] root INFO: epoch: [34/80], iter: 1380, lr: 0.000500, loss: 2.259562, acc: 0.763889, norm_edit_dis: 0.923683, reader_cost: 0.00009 s, batch_cost: 0.13039 s, samples: 1080, ips: 828.25666
+[2021/08/20 11:04:54] root INFO: epoch: [34/80], iter: 1390, lr: 0.000500, loss: 2.412123, acc: 0.759259, norm_edit_dis: 0.915303, reader_cost: 0.00005 s, batch_cost: 0.12854 s, samples: 1080, ips: 840.19360
+[2021/08/20 11:04:54] root INFO: epoch: [34/80], iter: 1393, lr: 0.000500, loss: 2.522068, acc: 0.745370, norm_edit_dis: 0.907591, reader_cost: 0.00002 s, batch_cost: 0.03880 s, samples: 324, ips: 835.06846
+[2021/08/20 11:04:54] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:04:54] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:04:56] root INFO: epoch: [35/80], iter: 1400, lr: 0.000500, loss: 2.522068, acc: 0.731481, norm_edit_dis: 0.909189, reader_cost: 0.02955 s, batch_cost: 0.12961 s, samples: 756, ips: 583.29084
+[2021/08/20 11:04:58] root INFO: epoch: [35/80], iter: 1410, lr: 0.000500, loss: 2.326332, acc: 0.740741, norm_edit_dis: 0.915155, reader_cost: 0.00008 s, batch_cost: 0.13095 s, samples: 1080, ips: 824.71135
+[2021/08/20 11:04:59] root INFO: epoch: [35/80], iter: 1420, lr: 0.000500, loss: 2.257512, acc: 0.745370, norm_edit_dis: 0.917276, reader_cost: 0.00008 s, batch_cost: 0.13045 s, samples: 1080, ips: 827.92181
+[2021/08/20 11:05:01] root INFO: epoch: [35/80], iter: 1430, lr: 0.000500, loss: 2.109160, acc: 0.763889, norm_edit_dis: 0.925158, reader_cost: 0.00004 s, batch_cost: 0.12856 s, samples: 1080, ips: 840.06692
+[2021/08/20 11:05:02] root INFO: epoch: [35/80], iter: 1434, lr: 0.000500, loss: 2.057759, acc: 0.768519, norm_edit_dis: 0.927281, reader_cost: 0.00002 s, batch_cost: 0.05136 s, samples: 432, ips: 841.14240
+[2021/08/20 11:05:02] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:02] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:04] root INFO: epoch: [36/80], iter: 1440, lr: 0.000500, loss: 2.091376, acc: 0.773148, norm_edit_dis: 0.927281, reader_cost: 0.02930 s, batch_cost: 0.11661 s, samples: 648, ips: 555.69415
+[2021/08/20 11:05:05] root INFO: epoch: [36/80], iter: 1450, lr: 0.000500, loss: 2.035552, acc: 0.782407, norm_edit_dis: 0.933984, reader_cost: 0.00011 s, batch_cost: 0.13307 s, samples: 1080, ips: 811.59584
+[2021/08/20 11:05:07] root INFO: epoch: [36/80], iter: 1460, lr: 0.000500, loss: 1.887891, acc: 0.796296, norm_edit_dis: 0.936082, reader_cost: 0.00011 s, batch_cost: 0.12973 s, samples: 1080, ips: 832.51901
+[2021/08/20 11:05:09] root INFO: epoch: [36/80], iter: 1470, lr: 0.000500, loss: 2.074695, acc: 0.768519, norm_edit_dis: 0.927655, reader_cost: 0.00005 s, batch_cost: 0.12881 s, samples: 1080, ips: 838.47339
+[2021/08/20 11:05:10] root INFO: epoch: [36/80], iter: 1475, lr: 0.000500, loss: 2.116800, acc: 0.759259, norm_edit_dis: 0.925925, reader_cost: 0.00003 s, batch_cost: 0.06395 s, samples: 540, ips: 844.46838
+[2021/08/20 11:05:10] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:10] root INFO: save model in ./output/rec/ic15/iter_epoch_36
+[2021/08/20 11:05:10] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:11] root INFO: epoch: [37/80], iter: 1480, lr: 0.000500, loss: 2.116800, acc: 0.754630, norm_edit_dis: 0.925060, reader_cost: 0.02911 s, batch_cost: 0.10611 s, samples: 540, ips: 508.91706
+[2021/08/20 11:05:13] root INFO: epoch: [37/80], iter: 1490, lr: 0.000500, loss: 1.777110, acc: 0.791667, norm_edit_dis: 0.937809, reader_cost: 0.00008 s, batch_cost: 0.13066 s, samples: 1080, ips: 826.56352
+[2021/08/20 11:05:15] root INFO: epoch: [37/80], iter: 1500, lr: 0.000500, loss: 1.789919, acc: 0.787037, norm_edit_dis: 0.937558, reader_cost: 0.00009 s, batch_cost: 0.13109 s, samples: 1080, ips: 823.84066
+[2021/08/20 11:05:16] root INFO: epoch: [37/80], iter: 1510, lr: 0.000500, loss: 1.984262, acc: 0.768519, norm_edit_dis: 0.925791, reader_cost: 0.00005 s, batch_cost: 0.13036 s, samples: 1080, ips: 828.45343
+[2021/08/20 11:05:18] root INFO: epoch: [37/80], iter: 1516, lr: 0.000500, loss: 1.984039, acc: 0.773148, norm_edit_dis: 0.922794, reader_cost: 0.00003 s, batch_cost: 0.07777 s, samples: 648, ips: 833.18358
+[2021/08/20 11:05:18] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:18] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:19] root INFO: epoch: [38/80], iter: 1520, lr: 0.000500, loss: 1.992115, acc: 0.768519, norm_edit_dis: 0.922682, reader_cost: 0.02987 s, batch_cost: 0.09062 s, samples: 432, ips: 476.73393
+[2021/08/20 11:05:21] root INFO: epoch: [38/80], iter: 1530, lr: 0.000500, loss: 1.886820, acc: 0.787037, norm_edit_dis: 0.928032, reader_cost: 0.00008 s, batch_cost: 0.13127 s, samples: 1080, ips: 822.70979
+[2021/08/20 11:05:22] root INFO: epoch: [38/80], iter: 1540, lr: 0.000500, loss: 1.675604, acc: 0.800926, norm_edit_dis: 0.938488, reader_cost: 0.00010 s, batch_cost: 0.13489 s, samples: 1080, ips: 800.66253
+[2021/08/20 11:05:24] root INFO: epoch: [38/80], iter: 1550, lr: 0.000500, loss: 1.706396, acc: 0.805556, norm_edit_dis: 0.934268, reader_cost: 0.00006 s, batch_cost: 0.13181 s, samples: 1080, ips: 819.35959
+[2021/08/20 11:05:25] root INFO: epoch: [38/80], iter: 1557, lr: 0.000500, loss: 1.807443, acc: 0.805556, norm_edit_dis: 0.931571, reader_cost: 0.00004 s, batch_cost: 0.09174 s, samples: 756, ips: 824.08397
+[2021/08/20 11:05:26] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:26] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:26] root INFO: epoch: [39/80], iter: 1560, lr: 0.000500, loss: 1.840456, acc: 0.805556, norm_edit_dis: 0.935012, reader_cost: 0.02966 s, batch_cost: 0.07721 s, samples: 324, ips: 419.61236
+[2021/08/20 11:05:28] root INFO: epoch: [39/80], iter: 1570, lr: 0.000500, loss: 1.796792, acc: 0.796296, norm_edit_dis: 0.937361, reader_cost: 0.00008 s, batch_cost: 0.13076 s, samples: 1080, ips: 825.93176
+[2021/08/20 11:05:30] root INFO: epoch: [39/80], iter: 1580, lr: 0.000500, loss: 1.638462, acc: 0.800926, norm_edit_dis: 0.938774, reader_cost: 0.00009 s, batch_cost: 0.13013 s, samples: 1080, ips: 829.95812
+[2021/08/20 11:05:32] root INFO: epoch: [39/80], iter: 1590, lr: 0.000500, loss: 1.528634, acc: 0.824074, norm_edit_dis: 0.945259, reader_cost: 0.00006 s, batch_cost: 0.12926 s, samples: 1080, ips: 835.51826
+[2021/08/20 11:05:33] root INFO: epoch: [39/80], iter: 1598, lr: 0.000500, loss: 1.519054, acc: 0.824074, norm_edit_dis: 0.942123, reader_cost: 0.00004 s, batch_cost: 0.10302 s, samples: 864, ips: 838.69869
+[2021/08/20 11:05:33] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:33] root INFO: save model in ./output/rec/ic15/iter_epoch_39
+[2021/08/20 11:05:33] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:34] root INFO: epoch: [40/80], iter: 1600, lr: 0.000500, loss: 1.550656, acc: 0.824074, norm_edit_dis: 0.941324, reader_cost: 0.02877 s, batch_cost: 0.06309 s, samples: 216, ips: 342.35270
+[2021/08/20 11:05:36] root INFO: epoch: [40/80], iter: 1610, lr: 0.000500, loss: 1.414848, acc: 0.824074, norm_edit_dis: 0.948035, reader_cost: 0.00010 s, batch_cost: 0.12910 s, samples: 1080, ips: 836.53029
+[2021/08/20 11:05:38] root INFO: epoch: [40/80], iter: 1620, lr: 0.000500, loss: 1.319789, acc: 0.828704, norm_edit_dis: 0.951541, reader_cost: 0.00008 s, batch_cost: 0.12960 s, samples: 1080, ips: 833.30282
+[2021/08/20 11:05:39] root INFO: epoch: [40/80], iter: 1630, lr: 0.000500, loss: 1.537432, acc: 0.828704, norm_edit_dis: 0.942116, reader_cost: 0.00007 s, batch_cost: 0.12933 s, samples: 1080, ips: 835.08190
+[2021/08/20 11:05:41] root INFO: epoch: [40/80], iter: 1639, lr: 0.000500, loss: 1.594204, acc: 0.824074, norm_edit_dis: 0.938160, reader_cost: 0.00004 s, batch_cost: 0.11534 s, samples: 972, ips: 842.71074
+[2021/08/20 11:05:41] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:41] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:42] root INFO: epoch: [41/80], iter: 1640, lr: 0.000500, loss: 1.571669, acc: 0.824074, norm_edit_dis: 0.938160, reader_cost: 0.02962 s, batch_cost: 0.05189 s, samples: 108, ips: 208.13033
+[2021/08/20 11:05:43] root INFO: epoch: [41/80], iter: 1650, lr: 0.000500, loss: 1.482707, acc: 0.837963, norm_edit_dis: 0.947693, reader_cost: 0.00010 s, batch_cost: 0.13201 s, samples: 1080, ips: 818.09453
+[2021/08/20 11:05:45] root INFO: epoch: [41/80], iter: 1660, lr: 0.000500, loss: 1.346894, acc: 0.842593, norm_edit_dis: 0.950292, reader_cost: 0.00010 s, batch_cost: 0.13056 s, samples: 1080, ips: 827.21363
+[2021/08/20 11:05:47] root INFO: epoch: [41/80], iter: 1670, lr: 0.000500, loss: 1.364091, acc: 0.833333, norm_edit_dis: 0.941303, reader_cost: 0.00008 s, batch_cost: 0.13246 s, samples: 1080, ips: 815.33858
+[2021/08/20 11:05:49] root INFO: epoch: [41/80], iter: 1680, lr: 0.000500, loss: 1.430410, acc: 0.828704, norm_edit_dis: 0.942908, reader_cost: 0.00005 s, batch_cost: 0.12916 s, samples: 1080, ips: 836.20446
+[2021/08/20 11:05:49] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:49] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:51] root INFO: epoch: [42/80], iter: 1690, lr: 0.000500, loss: 1.386123, acc: 0.833333, norm_edit_dis: 0.951150, reader_cost: 0.02976 s, batch_cost: 0.16923 s, samples: 1080, ips: 638.17830
+[2021/08/20 11:05:53] root INFO: epoch: [42/80], iter: 1700, lr: 0.000500, loss: 1.265997, acc: 0.837963, norm_edit_dis: 0.953462, reader_cost: 0.00008 s, batch_cost: 0.13024 s, samples: 1080, ips: 829.22217
+[2021/08/20 11:05:54] root INFO: epoch: [42/80], iter: 1710, lr: 0.000500, loss: 1.382068, acc: 0.833333, norm_edit_dis: 0.950964, reader_cost: 0.00007 s, batch_cost: 0.12912 s, samples: 1080, ips: 836.40054
+[2021/08/20 11:05:56] root INFO: epoch: [42/80], iter: 1720, lr: 0.000500, loss: 1.415437, acc: 0.837963, norm_edit_dis: 0.952051, reader_cost: 0.00005 s, batch_cost: 0.12916 s, samples: 1080, ips: 836.17112
+[2021/08/20 11:05:56] root INFO: epoch: [42/80], iter: 1721, lr: 0.000500, loss: 1.415437, acc: 0.833333, norm_edit_dis: 0.952051, reader_cost: 0.00000 s, batch_cost: 0.01293 s, samples: 108, ips: 835.18290
+[2021/08/20 11:05:57] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:05:57] root INFO: save model in ./output/rec/ic15/iter_epoch_42
+[2021/08/20 11:05:57] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:05:59] root INFO: epoch: [43/80], iter: 1730, lr: 0.000500, loss: 1.274243, acc: 0.856481, norm_edit_dis: 0.955782, reader_cost: 0.02749 s, batch_cost: 0.15553 s, samples: 972, ips: 624.94104
+[2021/08/20 11:06:01] root INFO: epoch: [43/80], iter: 1740, lr: 0.000500, loss: 1.179480, acc: 0.865741, norm_edit_dis: 0.958360, reader_cost: 0.00008 s, batch_cost: 0.13094 s, samples: 1080, ips: 824.83509
+[2021/08/20 11:06:02] root INFO: epoch: [43/80], iter: 1750, lr: 0.000500, loss: 1.188094, acc: 0.861111, norm_edit_dis: 0.958718, reader_cost: 0.00008 s, batch_cost: 0.12988 s, samples: 1080, ips: 831.51284
+[2021/08/20 11:06:04] root INFO: epoch: [43/80], iter: 1760, lr: 0.000500, loss: 1.301946, acc: 0.856481, norm_edit_dis: 0.953326, reader_cost: 0.00004 s, batch_cost: 0.12884 s, samples: 1080, ips: 838.26904
+[2021/08/20 11:06:04] root INFO: epoch: [43/80], iter: 1762, lr: 0.000500, loss: 1.289787, acc: 0.856481, norm_edit_dis: 0.954302, reader_cost: 0.00001 s, batch_cost: 0.02574 s, samples: 216, ips: 839.32087
+[2021/08/20 11:06:05] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:06:05] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:06:06] root INFO: epoch: [44/80], iter: 1770, lr: 0.000500, loss: 1.301689, acc: 0.847222, norm_edit_dis: 0.955463, reader_cost: 0.02861 s, batch_cost: 0.14130 s, samples: 864, ips: 611.48060
+[2021/08/20 11:06:08] root INFO: epoch: [44/80], iter: 1780, lr: 0.000500, loss: 1.121742, acc: 0.879630, norm_edit_dis: 0.960734, reader_cost: 0.00008 s, batch_cost: 0.13122 s, samples: 1080, ips: 823.07169
+[2021/08/20 11:06:10] root INFO: epoch: [44/80], iter: 1790, lr: 0.000500, loss: 1.096024, acc: 0.879630, norm_edit_dis: 0.963233, reader_cost: 0.00007 s, batch_cost: 0.12883 s, samples: 1080, ips: 838.29992
+[2021/08/20 11:06:11] root INFO: epoch: [44/80], iter: 1800, lr: 0.000500, loss: 1.110960, acc: 0.875000, norm_edit_dis: 0.960147, reader_cost: 0.00005 s, batch_cost: 0.12831 s, samples: 1080, ips: 841.69013
+[2021/08/20 11:06:12] root INFO: epoch: [44/80], iter: 1803, lr: 0.000500, loss: 1.138572, acc: 0.870370, norm_edit_dis: 0.958036, reader_cost: 0.00001 s, batch_cost: 0.03857 s, samples: 324, ips: 840.02387
+[2021/08/20 11:06:12] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:06:12] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:06:14] root INFO: epoch: [45/80], iter: 1810, lr: 0.000500, loss: 1.167501, acc: 0.870370, norm_edit_dis: 0.956673, reader_cost: 0.03074 s, batch_cost: 0.12868 s, samples: 756, ips: 587.49413
+[2021/08/20 11:06:16] root INFO: epoch: [45/80], iter: 1820, lr: 0.000500, loss: 1.142057, acc: 0.879630, norm_edit_dis: 0.963141, reader_cost: 0.00008 s, batch_cost: 0.13095 s, samples: 1080, ips: 824.72621
+[2021/08/20 11:06:17] root INFO: epoch: [45/80], iter: 1830, lr: 0.000500, loss: 1.037990, acc: 0.884259, norm_edit_dis: 0.965004, reader_cost: 0.00008 s, batch_cost: 0.13017 s, samples: 1080, ips: 829.69513
+[2021/08/20 11:06:19] root INFO: epoch: [45/80], iter: 1840, lr: 0.000500, loss: 1.026585, acc: 0.875000, norm_edit_dis: 0.962461, reader_cost: 0.00004 s, batch_cost: 0.12763 s, samples: 1080, ips: 846.16398
+[2021/08/20 11:06:20] root INFO: epoch: [45/80], iter: 1844, lr: 0.000500, loss: 1.026585, acc: 0.870370, norm_edit_dis: 0.962461, reader_cost: 0.00002 s, batch_cost: 0.05133 s, samples: 432, ips: 841.59560
+[2021/08/20 11:06:20] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:06:20] root INFO: save model in ./output/rec/ic15/iter_epoch_45
+[2021/08/20 11:06:20] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:06:22] root INFO: epoch: [46/80], iter: 1850, lr: 0.000500, loss: 1.035111, acc: 0.879630, norm_edit_dis: 0.963929, reader_cost: 0.02880 s, batch_cost: 0.11614 s, samples: 648, ips: 557.94303
+[2021/08/20 11:06:23] root INFO: epoch: [46/80], iter: 1860, lr: 0.000500, loss: 1.000552, acc: 0.888889, norm_edit_dis: 0.968687, reader_cost: 0.00009 s, batch_cost: 0.12887 s, samples: 1080, ips: 838.02200
+[2021/08/20 11:06:25] root INFO: epoch: [46/80], iter: 1870, lr: 0.000500, loss: 0.957764, acc: 0.888889, norm_edit_dis: 0.967878, reader_cost: 0.00009 s, batch_cost: 0.12924 s, samples: 1080, ips: 835.66145
+[2021/08/20 11:06:27] root INFO: epoch: [46/80], iter: 1880, lr: 0.000500, loss: 0.954138, acc: 0.884259, norm_edit_dis: 0.966774, reader_cost: 0.00005 s, batch_cost: 0.12957 s, samples: 1080, ips: 833.49648
+[2021/08/20 11:06:28] root INFO: epoch: [46/80], iter: 1885, lr: 0.000500, loss: 0.894330, acc: 0.888889, norm_edit_dis: 0.968615, reader_cost: 0.00002 s, batch_cost: 0.06465 s, samples: 540, ips: 835.24943
+[2021/08/20 11:06:28] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:06:28] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:06:29] root INFO: epoch: [47/80], iter: 1890, lr: 0.000500, loss: 0.938121, acc: 0.888889, norm_edit_dis: 0.968615, reader_cost: 0.02777 s, batch_cost: 0.10304 s, samples: 540, ips: 524.04805
+[2021/08/20 11:06:31] root INFO: epoch: [47/80], iter: 1900, lr: 0.000500, loss: 0.921839, acc: 0.893519, norm_edit_dis: 0.970227, reader_cost: 0.00008 s, batch_cost: 0.12954 s, samples: 1080, ips: 833.70465
+[2021/08/20 11:06:32] root INFO: epoch: [47/80], iter: 1910, lr: 0.000500, loss: 0.890206, acc: 0.893519, norm_edit_dis: 0.972108, reader_cost: 0.00009 s, batch_cost: 0.13067 s, samples: 1080, ips: 826.54045
+[2021/08/20 11:06:34] root INFO: epoch: [47/80], iter: 1920, lr: 0.000500, loss: 0.878999, acc: 0.888889, norm_edit_dis: 0.970194, reader_cost: 0.00005 s, batch_cost: 0.12836 s, samples: 1080, ips: 841.35401
+[2021/08/20 11:06:35] root INFO: epoch: [47/80], iter: 1926, lr: 0.000500, loss: 0.851203, acc: 0.893519, norm_edit_dis: 0.970503, reader_cost: 0.00003 s, batch_cost: 0.08000 s, samples: 648, ips: 809.96263
+[2021/08/20 11:06:35] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:06:35] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:06:37] root INFO: epoch: [48/80], iter: 1930, lr: 0.000500, loss: 0.876407, acc: 0.898148, norm_edit_dis: 0.969692, reader_cost: 0.03213 s, batch_cost: 0.09200 s, samples: 432, ips: 469.55958
+[2021/08/20 11:06:38] root INFO: epoch: [48/80], iter: 1940, lr: 0.000500, loss: 0.799251, acc: 0.902778, norm_edit_dis: 0.972260, reader_cost: 0.00010 s, batch_cost: 0.13455 s, samples: 1080, ips: 802.68683
+[2021/08/20 11:06:40] root INFO: epoch: [48/80], iter: 1950, lr: 0.000500, loss: 0.755313, acc: 0.907407, norm_edit_dis: 0.975241, reader_cost: 0.00014 s, batch_cost: 0.13455 s, samples: 1080, ips: 802.67715
+[2021/08/20 11:06:42] root INFO: epoch: [48/80], iter: 1960, lr: 0.000500, loss: 0.786649, acc: 0.907407, norm_edit_dis: 0.976185, reader_cost: 0.00006 s, batch_cost: 0.13241 s, samples: 1080, ips: 815.67362
+[2021/08/20 11:06:43] root INFO: epoch: [48/80], iter: 1967, lr: 0.000500, loss: 0.840101, acc: 0.902778, norm_edit_dis: 0.972784, reader_cost: 0.00004 s, batch_cost: 0.09139 s, samples: 756, ips: 827.25386
+[2021/08/20 11:06:43] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:06:44] root INFO: save model in ./output/rec/ic15/iter_epoch_48
+[2021/08/20 11:06:44] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:06:44] root INFO: epoch: [49/80], iter: 1970, lr: 0.000500, loss: 0.852084, acc: 0.902778, norm_edit_dis: 0.972408, reader_cost: 0.02828 s, batch_cost: 0.07632 s, samples: 324, ips: 424.55440
+[2021/08/20 11:06:46] root INFO: epoch: [49/80], iter: 1980, lr: 0.000500, loss: 0.823508, acc: 0.907407, norm_edit_dis: 0.972702, reader_cost: 0.00009 s, batch_cost: 0.12889 s, samples: 1080, ips: 837.94248
+[2021/08/20 11:06:48] root INFO: epoch: [49/80], iter: 1990, lr: 0.000500, loss: 0.778594, acc: 0.912037, norm_edit_dis: 0.971546, reader_cost: 0.00010 s, batch_cost: 0.13090 s, samples: 1080, ips: 825.04662
+[2021/08/20 11:06:50] root INFO: epoch: [49/80], iter: 2000, lr: 0.000500, loss: 0.777939, acc: 0.907407, norm_edit_dis: 0.971790, reader_cost: 0.00007 s, batch_cost: 0.13054 s, samples: 1080, ips: 827.32226
+[2021/08/20 11:06:51] root INFO: cur metric, acc: 0.5209436687530091, norm_edit_dis: 0.7864220450282078, fps: 1702.165582863238
+[2021/08/20 11:06:51] root INFO: save best model is to ./output/rec/ic15/best_accuracy
+[2021/08/20 11:06:51] root INFO: best metric, acc: 0.5209436687530091, norm_edit_dis: 0.7864220450282078, fps: 1702.165582863238, best_epoch: 49
+[2021/08/20 11:06:53] root INFO: epoch: [49/80], iter: 2008, lr: 0.000500, loss: 0.851729, acc: 0.907407, norm_edit_dis: 0.971160, reader_cost: 0.00004 s, batch_cost: 0.10409 s, samples: 864, ips: 830.01651
+[2021/08/20 11:06:53] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:06:53] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:06:54] root INFO: epoch: [50/80], iter: 2010, lr: 0.000500, loss: 0.805213, acc: 0.907407, norm_edit_dis: 0.972128, reader_cost: 0.03065 s, batch_cost: 0.06544 s, samples: 216, ips: 330.07666
+[2021/08/20 11:06:56] root INFO: epoch: [50/80], iter: 2020, lr: 0.000500, loss: 0.851729, acc: 0.912037, norm_edit_dis: 0.971160, reader_cost: 0.00009 s, batch_cost: 0.13430 s, samples: 1080, ips: 804.15025
+[2021/08/20 11:06:57] root INFO: epoch: [50/80], iter: 2030, lr: 0.000500, loss: 0.725860, acc: 0.912037, norm_edit_dis: 0.973633, reader_cost: 0.00009 s, batch_cost: 0.13177 s, samples: 1080, ips: 819.63163
+[2021/08/20 11:06:59] root INFO: epoch: [50/80], iter: 2040, lr: 0.000500, loss: 0.719789, acc: 0.907407, norm_edit_dis: 0.971671, reader_cost: 0.00007 s, batch_cost: 0.12947 s, samples: 1080, ips: 834.13988
+[2021/08/20 11:07:01] root INFO: epoch: [50/80], iter: 2049, lr: 0.000500, loss: 0.718064, acc: 0.907407, norm_edit_dis: 0.974989, reader_cost: 0.00005 s, batch_cost: 0.11580 s, samples: 972, ips: 839.37859
+[2021/08/20 11:07:01] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:01] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:02] root INFO: epoch: [51/80], iter: 2050, lr: 0.000500, loss: 0.704373, acc: 0.912037, norm_edit_dis: 0.976732, reader_cost: 0.02909 s, batch_cost: 0.05224 s, samples: 108, ips: 206.72043
+[2021/08/20 11:07:03] root INFO: epoch: [51/80], iter: 2060, lr: 0.000500, loss: 0.644274, acc: 0.921296, norm_edit_dis: 0.979733, reader_cost: 0.00008 s, batch_cost: 0.12908 s, samples: 1080, ips: 836.70752
+[2021/08/20 11:07:05] root INFO: epoch: [51/80], iter: 2070, lr: 0.000500, loss: 0.666228, acc: 0.916667, norm_edit_dis: 0.978390, reader_cost: 0.00008 s, batch_cost: 0.12798 s, samples: 1080, ips: 843.86193
+[2021/08/20 11:07:07] root INFO: epoch: [51/80], iter: 2080, lr: 0.000500, loss: 0.717003, acc: 0.916667, norm_edit_dis: 0.974713, reader_cost: 0.00011 s, batch_cost: 0.12851 s, samples: 1080, ips: 840.42804
+[2021/08/20 11:07:08] root INFO: epoch: [51/80], iter: 2090, lr: 0.000500, loss: 0.714883, acc: 0.921296, norm_edit_dis: 0.976854, reader_cost: 0.00004 s, batch_cost: 0.12793 s, samples: 1080, ips: 844.22208
+[2021/08/20 11:07:09] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:09] root INFO: save model in ./output/rec/ic15/iter_epoch_51
+[2021/08/20 11:07:09] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:11] root INFO: epoch: [52/80], iter: 2100, lr: 0.000500, loss: 0.621550, acc: 0.925926, norm_edit_dis: 0.980359, reader_cost: 0.02906 s, batch_cost: 0.16685 s, samples: 1080, ips: 647.30040
+[2021/08/20 11:07:13] root INFO: epoch: [52/80], iter: 2110, lr: 0.000500, loss: 0.698036, acc: 0.925926, norm_edit_dis: 0.979374, reader_cost: 0.00008 s, batch_cost: 0.12888 s, samples: 1080, ips: 838.01797
+[2021/08/20 11:07:14] root INFO: epoch: [52/80], iter: 2120, lr: 0.000500, loss: 0.627864, acc: 0.925926, norm_edit_dis: 0.980355, reader_cost: 0.00007 s, batch_cost: 0.12911 s, samples: 1080, ips: 836.50542
+[2021/08/20 11:07:16] root INFO: epoch: [52/80], iter: 2130, lr: 0.000500, loss: 0.565979, acc: 0.935185, norm_edit_dis: 0.980835, reader_cost: 0.00005 s, batch_cost: 0.12828 s, samples: 1080, ips: 841.90632
+[2021/08/20 11:07:16] root INFO: epoch: [52/80], iter: 2131, lr: 0.000500, loss: 0.570070, acc: 0.930556, norm_edit_dis: 0.981044, reader_cost: 0.00000 s, batch_cost: 0.01265 s, samples: 108, ips: 854.00838
+[2021/08/20 11:07:16] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:16] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:18] root INFO: epoch: [53/80], iter: 2140, lr: 0.000500, loss: 0.558668, acc: 0.935185, norm_edit_dis: 0.982360, reader_cost: 0.02974 s, batch_cost: 0.15635 s, samples: 972, ips: 621.70054
+[2021/08/20 11:07:20] root INFO: epoch: [53/80], iter: 2150, lr: 0.000500, loss: 0.579390, acc: 0.935185, norm_edit_dis: 0.980094, reader_cost: 0.00009 s, batch_cost: 0.12923 s, samples: 1080, ips: 835.69136
+[2021/08/20 11:07:22] root INFO: epoch: [53/80], iter: 2160, lr: 0.000500, loss: 0.653580, acc: 0.925926, norm_edit_dis: 0.978019, reader_cost: 0.00010 s, batch_cost: 0.13034 s, samples: 1080, ips: 828.57905
+[2021/08/20 11:07:24] root INFO: epoch: [53/80], iter: 2170, lr: 0.000500, loss: 0.647534, acc: 0.925926, norm_edit_dis: 0.978115, reader_cost: 0.00005 s, batch_cost: 0.12951 s, samples: 1080, ips: 833.88713
+[2021/08/20 11:07:24] root INFO: epoch: [53/80], iter: 2172, lr: 0.000500, loss: 0.620585, acc: 0.925926, norm_edit_dis: 0.978115, reader_cost: 0.00001 s, batch_cost: 0.02558 s, samples: 216, ips: 844.42934
+[2021/08/20 11:07:24] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:24] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:26] root INFO: epoch: [54/80], iter: 2180, lr: 0.000500, loss: 0.569454, acc: 0.925926, norm_edit_dis: 0.978517, reader_cost: 0.03148 s, batch_cost: 0.14178 s, samples: 864, ips: 609.40859
+[2021/08/20 11:07:28] root INFO: epoch: [54/80], iter: 2190, lr: 0.000500, loss: 0.585116, acc: 0.935185, norm_edit_dis: 0.977820, reader_cost: 0.00010 s, batch_cost: 0.12842 s, samples: 1080, ips: 841.01114
+[2021/08/20 11:07:30] root INFO: epoch: [54/80], iter: 2200, lr: 0.000500, loss: 0.608404, acc: 0.935185, norm_edit_dis: 0.977820, reader_cost: 0.00007 s, batch_cost: 0.12955 s, samples: 1080, ips: 833.63714
+[2021/08/20 11:07:31] root INFO: epoch: [54/80], iter: 2210, lr: 0.000500, loss: 0.561148, acc: 0.935185, norm_edit_dis: 0.981474, reader_cost: 0.00005 s, batch_cost: 0.12797 s, samples: 1080, ips: 843.92891
+[2021/08/20 11:07:32] root INFO: epoch: [54/80], iter: 2213, lr: 0.000500, loss: 0.591840, acc: 0.935185, norm_edit_dis: 0.983661, reader_cost: 0.00002 s, batch_cost: 0.03867 s, samples: 324, ips: 837.87242
+[2021/08/20 11:07:32] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:32] root INFO: save model in ./output/rec/ic15/iter_epoch_54
+[2021/08/20 11:07:32] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:34] root INFO: epoch: [55/80], iter: 2220, lr: 0.000500, loss: 0.591840, acc: 0.930556, norm_edit_dis: 0.981737, reader_cost: 0.02891 s, batch_cost: 0.12952 s, samples: 756, ips: 583.67242
+[2021/08/20 11:07:36] root INFO: epoch: [55/80], iter: 2230, lr: 0.000500, loss: 0.653554, acc: 0.935185, norm_edit_dis: 0.977491, reader_cost: 0.00008 s, batch_cost: 0.12933 s, samples: 1080, ips: 835.06158
+[2021/08/20 11:07:37] root INFO: epoch: [55/80], iter: 2240, lr: 0.000500, loss: 0.538378, acc: 0.944444, norm_edit_dis: 0.981338, reader_cost: 0.00008 s, batch_cost: 0.12933 s, samples: 1080, ips: 835.10084
+[2021/08/20 11:07:39] root INFO: epoch: [55/80], iter: 2250, lr: 0.000500, loss: 0.602840, acc: 0.925926, norm_edit_dis: 0.977142, reader_cost: 0.00004 s, batch_cost: 0.12831 s, samples: 1080, ips: 841.73345
+[2021/08/20 11:07:40] root INFO: epoch: [55/80], iter: 2254, lr: 0.000500, loss: 0.663900, acc: 0.925926, norm_edit_dis: 0.975668, reader_cost: 0.00002 s, batch_cost: 0.05157 s, samples: 432, ips: 837.73529
+[2021/08/20 11:07:40] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:40] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:41] root INFO: epoch: [56/80], iter: 2260, lr: 0.000500, loss: 0.663900, acc: 0.925926, norm_edit_dis: 0.975668, reader_cost: 0.03029 s, batch_cost: 0.11603 s, samples: 648, ips: 558.45754
+[2021/08/20 11:07:43] root INFO: epoch: [56/80], iter: 2270, lr: 0.000500, loss: 0.614386, acc: 0.944444, norm_edit_dis: 0.979475, reader_cost: 0.00009 s, batch_cost: 0.12911 s, samples: 1080, ips: 836.51546
+[2021/08/20 11:07:45] root INFO: epoch: [56/80], iter: 2280, lr: 0.000500, loss: 0.591444, acc: 0.953704, norm_edit_dis: 0.983298, reader_cost: 0.00008 s, batch_cost: 0.12867 s, samples: 1080, ips: 839.34031
+[2021/08/20 11:07:46] root INFO: epoch: [56/80], iter: 2290, lr: 0.000500, loss: 0.599837, acc: 0.958333, norm_edit_dis: 0.983474, reader_cost: 0.00005 s, batch_cost: 0.12818 s, samples: 1080, ips: 842.56998
+[2021/08/20 11:07:47] root INFO: epoch: [56/80], iter: 2295, lr: 0.000500, loss: 0.541181, acc: 0.949074, norm_edit_dis: 0.980432, reader_cost: 0.00002 s, batch_cost: 0.06416 s, samples: 540, ips: 841.70076
+[2021/08/20 11:07:48] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:48] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:49] root INFO: epoch: [57/80], iter: 2300, lr: 0.000500, loss: 0.565937, acc: 0.939815, norm_edit_dis: 0.980319, reader_cost: 0.03075 s, batch_cost: 0.10373 s, samples: 540, ips: 520.59407
+[2021/08/20 11:07:51] root INFO: epoch: [57/80], iter: 2310, lr: 0.000500, loss: 0.593842, acc: 0.939815, norm_edit_dis: 0.980607, reader_cost: 0.00009 s, batch_cost: 0.13256 s, samples: 1080, ips: 814.75462
+[2021/08/20 11:07:52] root INFO: epoch: [57/80], iter: 2320, lr: 0.000500, loss: 0.626750, acc: 0.925926, norm_edit_dis: 0.978308, reader_cost: 0.00020 s, batch_cost: 0.13212 s, samples: 1080, ips: 817.43787
+[2021/08/20 11:07:54] root INFO: epoch: [57/80], iter: 2330, lr: 0.000500, loss: 0.720764, acc: 0.921296, norm_edit_dis: 0.973470, reader_cost: 0.00005 s, batch_cost: 0.13277 s, samples: 1080, ips: 813.42894
+[2021/08/20 11:07:55] root INFO: epoch: [57/80], iter: 2336, lr: 0.000500, loss: 0.720764, acc: 0.921296, norm_edit_dis: 0.973549, reader_cost: 0.00003 s, batch_cost: 0.07907 s, samples: 648, ips: 819.56634
+[2021/08/20 11:07:55] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:07:55] root INFO: save model in ./output/rec/ic15/iter_epoch_57
+[2021/08/20 11:07:55] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:07:57] root INFO: epoch: [58/80], iter: 2340, lr: 0.000500, loss: 0.695011, acc: 0.925926, norm_edit_dis: 0.976424, reader_cost: 0.03250 s, batch_cost: 0.09195 s, samples: 432, ips: 469.82318
+[2021/08/20 11:07:58] root INFO: epoch: [58/80], iter: 2350, lr: 0.000500, loss: 0.551810, acc: 0.935185, norm_edit_dis: 0.980230, reader_cost: 0.00008 s, batch_cost: 0.13065 s, samples: 1080, ips: 826.64845
+[2021/08/20 11:08:00] root INFO: epoch: [58/80], iter: 2360, lr: 0.000500, loss: 0.655756, acc: 0.935185, norm_edit_dis: 0.979723, reader_cost: 0.00009 s, batch_cost: 0.12968 s, samples: 1080, ips: 832.80140
+[2021/08/20 11:08:02] root INFO: epoch: [58/80], iter: 2370, lr: 0.000500, loss: 0.540103, acc: 0.944444, norm_edit_dis: 0.980133, reader_cost: 0.00005 s, batch_cost: 0.12800 s, samples: 1080, ips: 843.73399
+[2021/08/20 11:08:03] root INFO: epoch: [58/80], iter: 2377, lr: 0.000500, loss: 0.540103, acc: 0.944444, norm_edit_dis: 0.981068, reader_cost: 0.00003 s, batch_cost: 0.09003 s, samples: 756, ips: 839.68449
+[2021/08/20 11:08:03] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:03] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:04] root INFO: epoch: [59/80], iter: 2380, lr: 0.000500, loss: 0.563601, acc: 0.944444, norm_edit_dis: 0.981068, reader_cost: 0.03109 s, batch_cost: 0.07717 s, samples: 324, ips: 419.84013
+[2021/08/20 11:08:06] root INFO: epoch: [59/80], iter: 2390, lr: 0.000500, loss: 0.493834, acc: 0.949074, norm_edit_dis: 0.986313, reader_cost: 0.00008 s, batch_cost: 0.13125 s, samples: 1080, ips: 822.87284
+[2021/08/20 11:08:08] root INFO: epoch: [59/80], iter: 2400, lr: 0.000500, loss: 0.520041, acc: 0.939815, norm_edit_dis: 0.982121, reader_cost: 0.00008 s, batch_cost: 0.12946 s, samples: 1080, ips: 834.22898
+[2021/08/20 11:08:09] root INFO: epoch: [59/80], iter: 2410, lr: 0.000500, loss: 0.574746, acc: 0.935185, norm_edit_dis: 0.981391, reader_cost: 0.00011 s, batch_cost: 0.12894 s, samples: 1080, ips: 837.61663
+[2021/08/20 11:08:11] root INFO: epoch: [59/80], iter: 2418, lr: 0.000500, loss: 0.522420, acc: 0.939815, norm_edit_dis: 0.982507, reader_cost: 0.00003 s, batch_cost: 0.10287 s, samples: 864, ips: 839.92840
+[2021/08/20 11:08:11] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:11] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:12] root INFO: epoch: [60/80], iter: 2420, lr: 0.000500, loss: 0.479271, acc: 0.944444, norm_edit_dis: 0.983833, reader_cost: 0.03101 s, batch_cost: 0.06482 s, samples: 216, ips: 333.21233
+[2021/08/20 11:08:13] root INFO: epoch: [60/80], iter: 2430, lr: 0.000500, loss: 0.458220, acc: 0.949074, norm_edit_dis: 0.984177, reader_cost: 0.00009 s, batch_cost: 0.13065 s, samples: 1080, ips: 826.64226
+[2021/08/20 11:08:15] root INFO: epoch: [60/80], iter: 2440, lr: 0.000500, loss: 0.505844, acc: 0.944444, norm_edit_dis: 0.981682, reader_cost: 0.00008 s, batch_cost: 0.12996 s, samples: 1080, ips: 831.04025
+[2021/08/20 11:08:17] root INFO: epoch: [60/80], iter: 2450, lr: 0.000500, loss: 0.476217, acc: 0.944444, norm_edit_dis: 0.984570, reader_cost: 0.00006 s, batch_cost: 0.12840 s, samples: 1080, ips: 841.14529
+[2021/08/20 11:08:18] root INFO: epoch: [60/80], iter: 2459, lr: 0.000500, loss: 0.436600, acc: 0.953704, norm_edit_dis: 0.985593, reader_cost: 0.00004 s, batch_cost: 0.11559 s, samples: 972, ips: 840.90250
+[2021/08/20 11:08:19] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:19] root INFO: save model in ./output/rec/ic15/iter_epoch_60
+[2021/08/20 11:08:19] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:19] root INFO: epoch: [61/80], iter: 2460, lr: 0.000500, loss: 0.436600, acc: 0.953704, norm_edit_dis: 0.985593, reader_cost: 0.03262 s, batch_cost: 0.05253 s, samples: 108, ips: 205.61518
+[2021/08/20 11:08:21] root INFO: epoch: [61/80], iter: 2470, lr: 0.000500, loss: 0.464477, acc: 0.949074, norm_edit_dis: 0.983974, reader_cost: 0.00008 s, batch_cost: 0.12893 s, samples: 1080, ips: 837.64544
+[2021/08/20 11:08:23] root INFO: epoch: [61/80], iter: 2480, lr: 0.000500, loss: 0.513066, acc: 0.944444, norm_edit_dis: 0.982326, reader_cost: 0.00008 s, batch_cost: 0.12933 s, samples: 1080, ips: 835.07082
+[2021/08/20 11:08:24] root INFO: epoch: [61/80], iter: 2490, lr: 0.000500, loss: 0.434961, acc: 0.953704, norm_edit_dis: 0.984287, reader_cost: 0.00011 s, batch_cost: 0.12880 s, samples: 1080, ips: 838.54014
+[2021/08/20 11:08:26] root INFO: epoch: [61/80], iter: 2500, lr: 0.000500, loss: 0.399822, acc: 0.953704, norm_edit_dis: 0.985858, reader_cost: 0.00005 s, batch_cost: 0.12849 s, samples: 1080, ips: 840.52130
+[2021/08/20 11:08:26] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:26] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:29] root INFO: epoch: [62/80], iter: 2510, lr: 0.000500, loss: 0.544469, acc: 0.939815, norm_edit_dis: 0.979730, reader_cost: 0.03048 s, batch_cost: 0.16873 s, samples: 1080, ips: 640.08826
+[2021/08/20 11:08:30] root INFO: epoch: [62/80], iter: 2520, lr: 0.000500, loss: 0.509661, acc: 0.953704, norm_edit_dis: 0.984414, reader_cost: 0.00010 s, batch_cost: 0.13100 s, samples: 1080, ips: 824.41191
+[2021/08/20 11:08:32] root INFO: epoch: [62/80], iter: 2530, lr: 0.000500, loss: 0.375323, acc: 0.958333, norm_edit_dis: 0.987522, reader_cost: 0.00016 s, batch_cost: 0.13444 s, samples: 1080, ips: 803.30760
+[2021/08/20 11:08:34] root INFO: epoch: [62/80], iter: 2540, lr: 0.000500, loss: 0.357100, acc: 0.953704, norm_edit_dis: 0.987675, reader_cost: 0.00005 s, batch_cost: 0.12934 s, samples: 1080, ips: 835.00093
+[2021/08/20 11:08:34] root INFO: epoch: [62/80], iter: 2541, lr: 0.000500, loss: 0.352786, acc: 0.953704, norm_edit_dis: 0.988408, reader_cost: 0.00000 s, batch_cost: 0.01286 s, samples: 108, ips: 839.81726
+[2021/08/20 11:08:34] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:34] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:36] root INFO: epoch: [63/80], iter: 2550, lr: 0.000500, loss: 0.320883, acc: 0.953704, norm_edit_dis: 0.988575, reader_cost: 0.02891 s, batch_cost: 0.15684 s, samples: 972, ips: 619.73707
+[2021/08/20 11:08:38] root INFO: epoch: [63/80], iter: 2560, lr: 0.000500, loss: 0.320883, acc: 0.953704, norm_edit_dis: 0.987594, reader_cost: 0.00010 s, batch_cost: 0.13102 s, samples: 1080, ips: 824.29640
+[2021/08/20 11:08:40] root INFO: epoch: [63/80], iter: 2570, lr: 0.000500, loss: 0.409419, acc: 0.949074, norm_edit_dis: 0.987019, reader_cost: 0.00008 s, batch_cost: 0.12958 s, samples: 1080, ips: 833.48958
+[2021/08/20 11:08:41] root INFO: epoch: [63/80], iter: 2580, lr: 0.000500, loss: 0.399663, acc: 0.953704, norm_edit_dis: 0.988507, reader_cost: 0.00006 s, batch_cost: 0.13219 s, samples: 1080, ips: 816.99278
+[2021/08/20 11:08:42] root INFO: epoch: [63/80], iter: 2582, lr: 0.000500, loss: 0.399663, acc: 0.953704, norm_edit_dis: 0.988198, reader_cost: 0.00001 s, batch_cost: 0.02666 s, samples: 216, ips: 810.35144
+[2021/08/20 11:08:42] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:42] root INFO: save model in ./output/rec/ic15/iter_epoch_63
+[2021/08/20 11:08:42] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:44] root INFO: epoch: [64/80], iter: 2590, lr: 0.000500, loss: 0.297048, acc: 0.962963, norm_edit_dis: 0.990934, reader_cost: 0.02895 s, batch_cost: 0.14307 s, samples: 864, ips: 603.88165
+[2021/08/20 11:08:46] root INFO: epoch: [64/80], iter: 2600, lr: 0.000500, loss: 0.317864, acc: 0.962963, norm_edit_dis: 0.989372, reader_cost: 0.00009 s, batch_cost: 0.13171 s, samples: 1080, ips: 820.01043
+[2021/08/20 11:08:48] root INFO: epoch: [64/80], iter: 2610, lr: 0.000500, loss: 0.386646, acc: 0.958333, norm_edit_dis: 0.985784, reader_cost: 0.00008 s, batch_cost: 0.13114 s, samples: 1080, ips: 823.56686
+[2021/08/20 11:08:49] root INFO: epoch: [64/80], iter: 2620, lr: 0.000500, loss: 0.329033, acc: 0.962963, norm_edit_dis: 0.986883, reader_cost: 0.00005 s, batch_cost: 0.12949 s, samples: 1080, ips: 834.03345
+[2021/08/20 11:08:50] root INFO: epoch: [64/80], iter: 2623, lr: 0.000500, loss: 0.340529, acc: 0.958333, norm_edit_dis: 0.986883, reader_cost: 0.00001 s, batch_cost: 0.03957 s, samples: 324, ips: 818.74100
+[2021/08/20 11:08:50] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:50] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:52] root INFO: epoch: [65/80], iter: 2630, lr: 0.000500, loss: 0.339297, acc: 0.962963, norm_edit_dis: 0.990234, reader_cost: 0.03095 s, batch_cost: 0.13127 s, samples: 756, ips: 575.90532
+[2021/08/20 11:08:53] root INFO: epoch: [65/80], iter: 2640, lr: 0.000500, loss: 0.349084, acc: 0.962963, norm_edit_dis: 0.990711, reader_cost: 0.00009 s, batch_cost: 0.13028 s, samples: 1080, ips: 828.95995
+[2021/08/20 11:08:55] root INFO: epoch: [65/80], iter: 2650, lr: 0.000500, loss: 0.339716, acc: 0.962963, norm_edit_dis: 0.990028, reader_cost: 0.00011 s, batch_cost: 0.12981 s, samples: 1080, ips: 831.98903
+[2021/08/20 11:08:57] root INFO: epoch: [65/80], iter: 2660, lr: 0.000500, loss: 0.357641, acc: 0.953704, norm_edit_dis: 0.985790, reader_cost: 0.00005 s, batch_cost: 0.12891 s, samples: 1080, ips: 837.78688
+[2021/08/20 11:08:58] root INFO: epoch: [65/80], iter: 2664, lr: 0.000500, loss: 0.357641, acc: 0.953704, norm_edit_dis: 0.985790, reader_cost: 0.00002 s, batch_cost: 0.05155 s, samples: 432, ips: 838.09798
+[2021/08/20 11:08:58] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:08:58] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:08:59] root INFO: epoch: [66/80], iter: 2670, lr: 0.000500, loss: 0.317210, acc: 0.962963, norm_edit_dis: 0.990535, reader_cost: 0.03192 s, batch_cost: 0.11717 s, samples: 648, ips: 553.04529
+[2021/08/20 11:09:01] root INFO: epoch: [66/80], iter: 2680, lr: 0.000500, loss: 0.247604, acc: 0.962963, norm_edit_dis: 0.992306, reader_cost: 0.00010 s, batch_cost: 0.13203 s, samples: 1080, ips: 818.01623
+[2021/08/20 11:09:03] root INFO: epoch: [66/80], iter: 2690, lr: 0.000500, loss: 0.337976, acc: 0.958333, norm_edit_dis: 0.986974, reader_cost: 0.00009 s, batch_cost: 0.13101 s, samples: 1080, ips: 824.33615
+[2021/08/20 11:09:04] root INFO: epoch: [66/80], iter: 2700, lr: 0.000500, loss: 0.370918, acc: 0.953704, norm_edit_dis: 0.986867, reader_cost: 0.00005 s, batch_cost: 0.12928 s, samples: 1080, ips: 835.37758
+[2021/08/20 11:09:05] root INFO: epoch: [66/80], iter: 2705, lr: 0.000500, loss: 0.397318, acc: 0.953704, norm_edit_dis: 0.983913, reader_cost: 0.00002 s, batch_cost: 0.06491 s, samples: 540, ips: 831.89445
+[2021/08/20 11:09:06] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:09:06] root INFO: save model in ./output/rec/ic15/iter_epoch_66
+[2021/08/20 11:09:06] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:09:07] root INFO: epoch: [67/80], iter: 2710, lr: 0.000500, loss: 0.413239, acc: 0.944444, norm_edit_dis: 0.982841, reader_cost: 0.03159 s, batch_cost: 0.10445 s, samples: 540, ips: 516.97342
+[2021/08/20 11:09:09] root INFO: epoch: [67/80], iter: 2720, lr: 0.000500, loss: 0.387374, acc: 0.944444, norm_edit_dis: 0.982981, reader_cost: 0.00009 s, batch_cost: 0.13069 s, samples: 1080, ips: 826.38635
+[2021/08/20 11:09:10] root INFO: epoch: [67/80], iter: 2730, lr: 0.000500, loss: 0.403339, acc: 0.944444, norm_edit_dis: 0.982393, reader_cost: 0.00009 s, batch_cost: 0.12922 s, samples: 1080, ips: 835.78141
+[2021/08/20 11:09:12] root INFO: epoch: [67/80], iter: 2740, lr: 0.000500, loss: 0.491653, acc: 0.935185, norm_edit_dis: 0.982068, reader_cost: 0.00006 s, batch_cost: 0.13065 s, samples: 1080, ips: 826.62627
+[2021/08/20 11:09:13] root INFO: epoch: [67/80], iter: 2746, lr: 0.000500, loss: 0.491653, acc: 0.925926, norm_edit_dis: 0.981941, reader_cost: 0.00003 s, batch_cost: 0.07699 s, samples: 648, ips: 841.66557
+[2021/08/20 11:09:14] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:09:14] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:09:15] root INFO: epoch: [68/80], iter: 2750, lr: 0.000500, loss: 0.491653, acc: 0.930556, norm_edit_dis: 0.981391, reader_cost: 0.02890 s, batch_cost: 0.09049 s, samples: 432, ips: 477.37487
+[2021/08/20 11:09:16] root INFO: epoch: [68/80], iter: 2760, lr: 0.000500, loss: 0.452079, acc: 0.935185, norm_edit_dis: 0.981391, reader_cost: 0.00008 s, batch_cost: 0.12926 s, samples: 1080, ips: 835.52412
+[2021/08/20 11:09:18] root INFO: epoch: [68/80], iter: 2770, lr: 0.000500, loss: 0.438237, acc: 0.944444, norm_edit_dis: 0.982457, reader_cost: 0.00008 s, batch_cost: 0.13026 s, samples: 1080, ips: 829.08482
+[2021/08/20 11:09:20] root INFO: epoch: [68/80], iter: 2780, lr: 0.000500, loss: 0.400630, acc: 0.944444, norm_edit_dis: 0.984360, reader_cost: 0.00005 s, batch_cost: 0.12939 s, samples: 1080, ips: 834.68721
+[2021/08/20 11:09:21] root INFO: epoch: [68/80], iter: 2787, lr: 0.000500, loss: 0.341556, acc: 0.953704, norm_edit_dis: 0.986392, reader_cost: 0.00003 s, batch_cost: 0.09003 s, samples: 756, ips: 839.72274
+[2021/08/20 11:09:21] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:09:21] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:09:22] root INFO: epoch: [69/80], iter: 2790, lr: 0.000500, loss: 0.360337, acc: 0.953704, norm_edit_dis: 0.986392, reader_cost: 0.02940 s, batch_cost: 0.07906 s, samples: 324, ips: 409.83359
+[2021/08/20 11:09:24] root INFO: epoch: [69/80], iter: 2800, lr: 0.000500, loss: 0.331973, acc: 0.962963, norm_edit_dis: 0.986500, reader_cost: 0.00009 s, batch_cost: 0.13023 s, samples: 1080, ips: 829.28365
+[2021/08/20 11:09:26] root INFO: epoch: [69/80], iter: 2810, lr: 0.000500, loss: 0.341248, acc: 0.962963, norm_edit_dis: 0.987847, reader_cost: 0.00009 s, batch_cost: 0.13051 s, samples: 1080, ips: 827.52478
+[2021/08/20 11:09:27] root INFO: epoch: [69/80], iter: 2820, lr: 0.000500, loss: 0.343615, acc: 0.962963, norm_edit_dis: 0.985918, reader_cost: 0.00006 s, batch_cost: 0.12860 s, samples: 1080, ips: 839.81368
+[2021/08/20 11:09:29] root INFO: epoch: [69/80], iter: 2828, lr: 0.000500, loss: 0.371220, acc: 0.958333, norm_edit_dis: 0.985918, reader_cost: 0.00004 s, batch_cost: 0.10279 s, samples: 864, ips: 840.57776
+[2021/08/20 11:09:29] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:09:29] root INFO: save model in ./output/rec/ic15/iter_epoch_69
+[2021/08/20 11:09:29] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:09:30] root INFO: epoch: [70/80], iter: 2830, lr: 0.000500, loss: 0.354734, acc: 0.958333, norm_edit_dis: 0.986600, reader_cost: 0.03032 s, batch_cost: 0.06558 s, samples: 216, ips: 329.34926
+[2021/08/20 11:09:32] root INFO: epoch: [70/80], iter: 2840, lr: 0.000500, loss: 0.343936, acc: 0.962963, norm_edit_dis: 0.989262, reader_cost: 0.00008 s, batch_cost: 0.13038 s, samples: 1080, ips: 828.32542
+[2021/08/20 11:09:33] root INFO: epoch: [70/80], iter: 2850, lr: 0.000500, loss: 0.312480, acc: 0.962963, norm_edit_dis: 0.989763, reader_cost: 0.00009 s, batch_cost: 0.13162 s, samples: 1080, ips: 820.55810
+[2021/08/20 11:09:35] root INFO: epoch: [70/80], iter: 2860, lr: 0.000500, loss: 0.325322, acc: 0.958333, norm_edit_dis: 0.988145, reader_cost: 0.00007 s, batch_cost: 0.12993 s, samples: 1080, ips: 831.18938
+[2021/08/20 11:09:37] root INFO: epoch: [70/80], iter: 2869, lr: 0.000500, loss: 0.319013, acc: 0.958333, norm_edit_dis: 0.988145, reader_cost: 0.00004 s, batch_cost: 0.11497 s, samples: 972, ips: 845.42169
+[2021/08/20 11:09:37] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:09:37] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:09:37] root INFO: epoch: [71/80], iter: 2870, lr: 0.000500, loss: 0.319013, acc: 0.958333, norm_edit_dis: 0.988145, reader_cost: 0.03086 s, batch_cost: 0.05242 s, samples: 108, ips: 206.02778
+[2021/08/20 11:09:39] root INFO: epoch: [71/80], iter: 2880, lr: 0.000500, loss: 0.246816, acc: 0.967593, norm_edit_dis: 0.992497, reader_cost: 0.00008 s, batch_cost: 0.13039 s, samples: 1080, ips: 828.30861
+[2021/08/20 11:09:41] root INFO: epoch: [71/80], iter: 2890, lr: 0.000500, loss: 0.292977, acc: 0.962963, norm_edit_dis: 0.988255, reader_cost: 0.00008 s, batch_cost: 0.13043 s, samples: 1080, ips: 828.05030
+[2021/08/20 11:09:43] root INFO: epoch: [71/80], iter: 2900, lr: 0.000500, loss: 0.338625, acc: 0.962963, norm_edit_dis: 0.987636, reader_cost: 0.00006 s, batch_cost: 0.13068 s, samples: 1080, ips: 826.47123
+[2021/08/20 11:09:44] root INFO: epoch: [71/80], iter: 2910, lr: 0.000500, loss: 0.246804, acc: 0.962963, norm_edit_dis: 0.990157, reader_cost: 0.00005 s, batch_cost: 0.12901 s, samples: 1080, ips: 837.12299
+[2021/08/20 11:09:44] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:09:44] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:09:47] root INFO: epoch: [72/80], iter: 2920, lr: 0.000500, loss: 0.256435, acc: 0.967593, norm_edit_dis: 0.990157, reader_cost: 0.03025 s, batch_cost: 0.16798 s, samples: 1080, ips: 642.92080
+[2021/08/20 11:09:48] root INFO: epoch: [72/80], iter: 2930, lr: 0.000500, loss: 0.256085, acc: 0.967593, norm_edit_dis: 0.992157, reader_cost: 0.00009 s, batch_cost: 0.12890 s, samples: 1080, ips: 837.83786
+[2021/08/20 11:09:50] root INFO: epoch: [72/80], iter: 2940, lr: 0.000500, loss: 0.263847, acc: 0.962963, norm_edit_dis: 0.990259, reader_cost: 0.00007 s, batch_cost: 0.12893 s, samples: 1080, ips: 837.63692
+[2021/08/20 11:09:52] root INFO: epoch: [72/80], iter: 2950, lr: 0.000500, loss: 0.261015, acc: 0.962963, norm_edit_dis: 0.989232, reader_cost: 0.00005 s, batch_cost: 0.12865 s, samples: 1080, ips: 839.46086
+[2021/08/20 11:09:52] root INFO: epoch: [72/80], iter: 2951, lr: 0.000500, loss: 0.261015, acc: 0.962963, norm_edit_dis: 0.990088, reader_cost: 0.00001 s, batch_cost: 0.01300 s, samples: 108, ips: 830.73041
+[2021/08/20 11:09:52] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:09:52] root INFO: save model in ./output/rec/ic15/iter_epoch_72
+[2021/08/20 11:09:52] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:09:54] root INFO: epoch: [73/80], iter: 2960, lr: 0.000500, loss: 0.236135, acc: 0.962963, norm_edit_dis: 0.991900, reader_cost: 0.03106 s, batch_cost: 0.15555 s, samples: 972, ips: 624.88692
+[2021/08/20 11:09:56] root INFO: epoch: [73/80], iter: 2970, lr: 0.000500, loss: 0.249260, acc: 0.967593, norm_edit_dis: 0.992082, reader_cost: 0.00009 s, batch_cost: 0.13100 s, samples: 1080, ips: 824.41611
+[2021/08/20 11:09:58] root INFO: epoch: [73/80], iter: 2980, lr: 0.000500, loss: 0.266514, acc: 0.972222, norm_edit_dis: 0.990403, reader_cost: 0.00008 s, batch_cost: 0.13277 s, samples: 1080, ips: 813.46181
+[2021/08/20 11:09:59] root INFO: epoch: [73/80], iter: 2990, lr: 0.000500, loss: 0.253675, acc: 0.972222, norm_edit_dis: 0.990823, reader_cost: 0.00005 s, batch_cost: 0.12959 s, samples: 1080, ips: 833.37672
+[2021/08/20 11:10:00] root INFO: epoch: [73/80], iter: 2992, lr: 0.000500, loss: 0.253675, acc: 0.972222, norm_edit_dis: 0.990823, reader_cost: 0.00001 s, batch_cost: 0.02549 s, samples: 216, ips: 847.38169
+[2021/08/20 11:10:00] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:00] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:10:02] root INFO: epoch: [74/80], iter: 3000, lr: 0.000500, loss: 0.221133, acc: 0.967593, norm_edit_dis: 0.990823, reader_cost: 0.03176 s, batch_cost: 0.14260 s, samples: 864, ips: 605.87242
+[2021/08/20 11:10:04] root INFO: epoch: [74/80], iter: 3010, lr: 0.000500, loss: 0.208367, acc: 0.967593, norm_edit_dis: 0.990162, reader_cost: 0.00010 s, batch_cost: 0.13070 s, samples: 1080, ips: 826.29078
+[2021/08/20 11:10:05] root INFO: epoch: [74/80], iter: 3020, lr: 0.000500, loss: 0.231223, acc: 0.972222, norm_edit_dis: 0.990741, reader_cost: 0.00008 s, batch_cost: 0.12956 s, samples: 1080, ips: 833.61919
+[2021/08/20 11:10:07] root INFO: epoch: [74/80], iter: 3030, lr: 0.000500, loss: 0.222510, acc: 0.972222, norm_edit_dis: 0.991346, reader_cost: 0.00004 s, batch_cost: 0.12883 s, samples: 1080, ips: 838.33575
+[2021/08/20 11:10:07] root INFO: epoch: [74/80], iter: 3033, lr: 0.000500, loss: 0.217985, acc: 0.972222, norm_edit_dis: 0.992080, reader_cost: 0.00002 s, batch_cost: 0.03867 s, samples: 324, ips: 837.96232
+[2021/08/20 11:10:08] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:08] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:10:09] root INFO: epoch: [75/80], iter: 3040, lr: 0.000500, loss: 0.217142, acc: 0.972222, norm_edit_dis: 0.991490, reader_cost: 0.03069 s, batch_cost: 0.13141 s, samples: 756, ips: 575.31026
+[2021/08/20 11:10:11] root INFO: epoch: [75/80], iter: 3050, lr: 0.000500, loss: 0.225378, acc: 0.972222, norm_edit_dis: 0.991733, reader_cost: 0.00008 s, batch_cost: 0.12893 s, samples: 1080, ips: 837.64699
+[2021/08/20 11:10:13] root INFO: epoch: [75/80], iter: 3060, lr: 0.000500, loss: 0.244583, acc: 0.972222, norm_edit_dis: 0.990948, reader_cost: 0.00008 s, batch_cost: 0.12878 s, samples: 1080, ips: 838.63188
+[2021/08/20 11:10:15] root INFO: epoch: [75/80], iter: 3070, lr: 0.000500, loss: 0.217741, acc: 0.972222, norm_edit_dis: 0.992653, reader_cost: 0.00004 s, batch_cost: 0.12880 s, samples: 1080, ips: 838.52834
+[2021/08/20 11:10:15] root INFO: epoch: [75/80], iter: 3074, lr: 0.000500, loss: 0.197678, acc: 0.972222, norm_edit_dis: 0.993386, reader_cost: 0.00002 s, batch_cost: 0.05126 s, samples: 432, ips: 842.68291
+[2021/08/20 11:10:15] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:16] root INFO: save model in ./output/rec/ic15/iter_epoch_75
+[2021/08/20 11:10:16] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:10:17] root INFO: epoch: [76/80], iter: 3080, lr: 0.000500, loss: 0.192485, acc: 0.976852, norm_edit_dis: 0.993783, reader_cost: 0.02950 s, batch_cost: 0.11633 s, samples: 648, ips: 557.01317
+[2021/08/20 11:10:19] root INFO: epoch: [76/80], iter: 3090, lr: 0.000500, loss: 0.216698, acc: 0.972222, norm_edit_dis: 0.992582, reader_cost: 0.00008 s, batch_cost: 0.12894 s, samples: 1080, ips: 837.61647
+[2021/08/20 11:10:20] root INFO: epoch: [76/80], iter: 3100, lr: 0.000500, loss: 0.214608, acc: 0.972222, norm_edit_dis: 0.991821, reader_cost: 0.00008 s, batch_cost: 0.12894 s, samples: 1080, ips: 837.62112
+[2021/08/20 11:10:22] root INFO: epoch: [76/80], iter: 3110, lr: 0.000500, loss: 0.194022, acc: 0.972222, norm_edit_dis: 0.992642, reader_cost: 0.00004 s, batch_cost: 0.12792 s, samples: 1080, ips: 844.28565
+[2021/08/20 11:10:23] root INFO: epoch: [76/80], iter: 3115, lr: 0.000500, loss: 0.194022, acc: 0.972222, norm_edit_dis: 0.992488, reader_cost: 0.00002 s, batch_cost: 0.06415 s, samples: 540, ips: 841.80306
+[2021/08/20 11:10:23] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:23] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:10:24] root INFO: epoch: [77/80], iter: 3120, lr: 0.000500, loss: 0.198569, acc: 0.972222, norm_edit_dis: 0.991931, reader_cost: 0.03017 s, batch_cost: 0.10282 s, samples: 540, ips: 525.17910
+[2021/08/20 11:10:26] root INFO: epoch: [77/80], iter: 3130, lr: 0.000500, loss: 0.200108, acc: 0.972222, norm_edit_dis: 0.992387, reader_cost: 0.00008 s, batch_cost: 0.12867 s, samples: 1080, ips: 839.32974
+[2021/08/20 11:10:28] root INFO: epoch: [77/80], iter: 3140, lr: 0.000500, loss: 0.166796, acc: 0.976852, norm_edit_dis: 0.994415, reader_cost: 0.00008 s, batch_cost: 0.12837 s, samples: 1080, ips: 841.31026
+[2021/08/20 11:10:30] root INFO: epoch: [77/80], iter: 3150, lr: 0.000500, loss: 0.172900, acc: 0.972222, norm_edit_dis: 0.993739, reader_cost: 0.00005 s, batch_cost: 0.12812 s, samples: 1080, ips: 842.95773
+[2021/08/20 11:10:31] root INFO: epoch: [77/80], iter: 3156, lr: 0.000500, loss: 0.177733, acc: 0.972222, norm_edit_dis: 0.992526, reader_cost: 0.00003 s, batch_cost: 0.07644 s, samples: 648, ips: 847.75966
+[2021/08/20 11:10:31] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:31] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:10:32] root INFO: epoch: [78/80], iter: 3160, lr: 0.000500, loss: 0.198258, acc: 0.972222, norm_edit_dis: 0.991609, reader_cost: 0.03035 s, batch_cost: 0.09034 s, samples: 432, ips: 478.20097
+[2021/08/20 11:10:34] root INFO: epoch: [78/80], iter: 3170, lr: 0.000500, loss: 0.195536, acc: 0.976852, norm_edit_dis: 0.992368, reader_cost: 0.00008 s, batch_cost: 0.12852 s, samples: 1080, ips: 840.35897
+[2021/08/20 11:10:35] root INFO: epoch: [78/80], iter: 3180, lr: 0.000500, loss: 0.195536, acc: 0.976852, norm_edit_dis: 0.993127, reader_cost: 0.00008 s, batch_cost: 0.12954 s, samples: 1080, ips: 833.74991
+[2021/08/20 11:10:37] root INFO: epoch: [78/80], iter: 3190, lr: 0.000500, loss: 0.174518, acc: 0.972222, norm_edit_dis: 0.992901, reader_cost: 0.00005 s, batch_cost: 0.12878 s, samples: 1080, ips: 838.64213
+[2021/08/20 11:10:38] root INFO: epoch: [78/80], iter: 3197, lr: 0.000500, loss: 0.191346, acc: 0.976852, norm_edit_dis: 0.992901, reader_cost: 0.00003 s, batch_cost: 0.08954 s, samples: 756, ips: 844.30006
+[2021/08/20 11:10:39] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:39] root INFO: save model in ./output/rec/ic15/iter_epoch_78
+[2021/08/20 11:10:39] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:10:40] root INFO: epoch: [79/80], iter: 3200, lr: 0.000500, loss: 0.193770, acc: 0.972222, norm_edit_dis: 0.992119, reader_cost: 0.02935 s, batch_cost: 0.07690 s, samples: 324, ips: 421.30664
+[2021/08/20 11:10:41] root INFO: epoch: [79/80], iter: 3210, lr: 0.000500, loss: 0.194129, acc: 0.972222, norm_edit_dis: 0.992504, reader_cost: 0.00013 s, batch_cost: 0.12955 s, samples: 1080, ips: 833.67503
+[2021/08/20 11:10:43] root INFO: epoch: [79/80], iter: 3220, lr: 0.000500, loss: 0.189226, acc: 0.976852, norm_edit_dis: 0.994066, reader_cost: 0.00009 s, batch_cost: 0.13094 s, samples: 1080, ips: 824.78298
+[2021/08/20 11:10:45] root INFO: epoch: [79/80], iter: 3230, lr: 0.000500, loss: 0.186477, acc: 0.981481, norm_edit_dis: 0.994136, reader_cost: 0.00006 s, batch_cost: 0.12851 s, samples: 1080, ips: 840.41167
+[2021/08/20 11:10:46] root INFO: epoch: [79/80], iter: 3238, lr: 0.000500, loss: 0.179564, acc: 0.976852, norm_edit_dis: 0.993197, reader_cost: 0.00004 s, batch_cost: 0.10310 s, samples: 864, ips: 837.98441
+[2021/08/20 11:10:46] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:46] root INFO: Initialize indexs of datasets:['./train_data/ic15_data/rec_gt_train.txt']
+[2021/08/20 11:10:47] root INFO: epoch: [80/80], iter: 3240, lr: 0.000500, loss: 0.172810, acc: 0.976852, norm_edit_dis: 0.993197, reader_cost: 0.02974 s, batch_cost: 0.06660 s, samples: 216, ips: 324.34075
+[2021/08/20 11:10:49] root INFO: epoch: [80/80], iter: 3250, lr: 0.000500, loss: 0.168401, acc: 0.972222, norm_edit_dis: 0.993122, reader_cost: 0.00009 s, batch_cost: 0.13099 s, samples: 1080, ips: 824.50105
+[2021/08/20 11:10:51] root INFO: epoch: [80/80], iter: 3260, lr: 0.000500, loss: 0.161892, acc: 0.972222, norm_edit_dis: 0.994015, reader_cost: 0.00008 s, batch_cost: 0.13123 s, samples: 1080, ips: 822.98631
+[2021/08/20 11:10:52] root INFO: epoch: [80/80], iter: 3270, lr: 0.000500, loss: 0.193635, acc: 0.981481, norm_edit_dis: 0.994279, reader_cost: 0.00006 s, batch_cost: 0.12868 s, samples: 1080, ips: 839.30890
+[2021/08/20 11:10:54] root INFO: epoch: [80/80], iter: 3279, lr: 0.000500, loss: 0.180856, acc: 0.972222, norm_edit_dis: 0.993919, reader_cost: 0.00004 s, batch_cost: 0.11557 s, samples: 972, ips: 841.08361
+[2021/08/20 11:10:54] root INFO: save model in ./output/rec/ic15/latest
+[2021/08/20 11:10:54] root INFO: best metric, acc: 0.5209436687530091, norm_edit_dis: 0.7864220450282078, fps: 1702.165582863238, best_epoch: 49
