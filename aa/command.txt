@@ -1,0 +1,20 @@
+# =============数据集转换==============
+python gen_label.py --mode="rec" --input_path="train_data/ic15_data/txt/rec_gt_train.txt" --output_label="train_data/ic15_data/txt_1/rec_gt_train_1.txt"
+# ==============训练================
+#断点训练
+python3 tools/train.py -c configs/rec/ch_ppocr_v2.0/rec_chinese_lite_train_v2.0_iot.yml -o Global.checkpoints=./output/rec_chinese_lite_v2.0/latest
+# 英文模型训练
+python3 tools/train.py -c configs/rec/rec_icdar15_train_1.yml
+# 中英文模型训练
+# ===大模型===
+python3 tools/train.py -c configs/rec/ch_ppocr_v2.0/rec_chinese_common_train_v2.0_iot.yml
+# ====小模型===
+python3 tools/train.py -c configs/rec/ch_ppocr_v2.0/rec_chinese_lite_train_v2.0_iot.yml
+# ============模型评估================
+python3 tools/eval.py -c configs/rec/rec_icdar15_train_1.yml -o Global.checkpoints=pretrain_models/rec_mv3_none_bilstm_ctc_v2.0_train/best_accuracy
+# ================预测================
+# 英文预测
+python3 tools/infer_rec.py -c configs/rec/rec_icdar15_train_1.yml -o Global.checkpoints=output/rec/ic15/best_accuracy Global.infer_img=doc/imgs_words/en/word_1.png
+# 中英文预测(小模型)
+python3 tools/infer_rec.py -c configs/rec/ch_ppocr_v2.0/rec_chinese_lite_train_v2.0_iot.yml -o Global.checkpoints=output/rec_chinese_lite_v2.0/best_accuracy Global.infer_img=doc/imgs_words/en/word_2.png
+python3 tools/infer_rec.py -c configs/rec/ch_ppocr_v2.0/rec_chinese_lite_train_v2.0_iot.yml -o Global.checkpoints=output/rec_chinese_lite_v2.0/best_accuracy Global.infer_img=doc/imgs_words/ch/word_1.jpg
